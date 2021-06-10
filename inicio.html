@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html  xml:lang="es" lang="es-es">
+<head>
+	<title></title>
+
+	
+	<title>Justicia Nacional Electoral - REGISTRO DE INFRACTORES</title>
+	<meta http-equiv="Cache-Control" content="max-age=31536000">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="Keywords" content="padron,padrones,mesas,consulta,elecciones,interna,argentina">
+	<meta name="Subject" content="Consulta Padron Electoral">
+	<meta name="Language" content="es">
+	<meta name="Robots" content="index, follow">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" type="text/css" href="css/sec.css">
+	<link rel="stylesheet" type="text/css" href="css/principal.css">
+
+</head>
+<body>
+
+
+<div class="row" style="margin-bottom:10px;">
+	<div class="col-lg-9 col-md-6 col-sm-6 text-lg-left text-md-left text-sm-left text-center">
+		<img alt="Logo CNE" src="imagenes/registro_infractores.png" height="60">
+	</div>
+
+	<div class="col-lg-3 col-md-6 col-sm-6 text-lg-right text-md-right text-sm-right text-center">
+		<img alt="Logo CNE" src="imagenes/logo_cne.jpg" height="60">
+	</div>
+</div>
+
+
+
+<div class="row">
+		<div class="col align-self-start">
+			<!-- Agrego el nuevo componente  -->
+			<div class="card shadow rounded "> 
+				<div class="card-header text-center cne-cabecera-bg"> 
+				<!-- Cabecera Aplicacion -->
+					<span class="cabecera-titulo">
+						REGISTRO DE INFRACTORES AL DEBER DE VOTAR
+					</span>
+					<br>
+					<span class="cabecera-subtitulo">
+						Acceso público 
+					</span>
+				</div>
+				
+				<div class="card-body">
+					<form name="dgt" method="post" action="" onsubmit="return validar_form(this);">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+											<div class="input-group mb-2">
+											<div class="input-group-prepend">
+											<div class="input-group-text">
+											<i class="fas fa-id-card"></i></div>
+											</div>
+											<input type="text" tabindex="1" value="" name="Emat" class="form-control" id="matricula" placeholder="Documento N°" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Ingrese su Nº de documento SIN puntos ni letras...">
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-md-4">
+									<div class="form-group">
+										<div class="input-group mb-2">
+											<div class="input-group-prepend">
+												<div class="input-group-text"><i class="fas fa-street-view"></i></div>
+											</div>
+											<select tabindex="2" id="sexo" class="form-control" size="1" name="Esex" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Seleccione su sexo...">
+												<option value=" ">Sexo</option>
+												<option value="F">Femenino</option>	 						 
+												<option value="M">Masculino</option>	 						 
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<div class="input-group mb-2">
+											<div class="input-group-prepend">
+												<div class="input-group-text">
+													<i class="fas fa-map-marker-alt"></i>  
+												</div>
+											</div>
+											<select tabindex="3" class="form-control" value="" name="Epro" size="1" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Seleccione la provincia que corresponde a su ultimo domicilio...">
+											<option value="0">Distrito Electoral</option><option style="" value="01">Capital Federal</option><option style="" value="02">Buenos Aires</option><option style="" value="03">Catamarca</option><option style="" value="04">Córdoba</option><option style="" value="05">Corrientes</option><option style="" value="06">Chaco</option><option style="" value="07">Chubut</option><option style="" value="08">Entre Ríos</option><option style="" value="09">Formosa</option><option style="" value="10">Jujuy</option><option style="" value="11">La Pampa</option><option style="" value="12">La Rioja</option><option style="" value="13">Mendoza</option><option style="" value="14">Misiones</option><option style="" value="15">Neuquen</option><option style="" value="16">Río Negro</option><option style="" value="17">Salta</option><option style="" value="18">San Juan</option><option style="" value="19">San Luis</option><option style="" value="20">Santa Cruz</option><option style="" value="21">Santa Fe</option><option style="" value="22">Santiago del Estero</option><option style="" value="23">Tucumán</option><option style="" value="24">Tierra del Fuego</option><option style="" value="30">Argentinos en el Exterior</option> </select>  
+										</div>
+									</div>
+								</div>
+							</div>
+								
+								
+							<div class="row">
+								<div class="col-md-3 text-center">
+									<img src="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/securimage_show.php" width="120" height="45" id="captcha" alt="Generando imagen..." title="Imagen de seguridad. Complete el campo asociado...">
+									<button onclick="document.getElementById(&#39;captcha&#39;).src = &#39;captcha/securimage_show.php?&#39; + Math.random(); fococaptcha();return false" type="button" class="btn btn-sm btn-outline-success">	<i class="fas fa-sync" style="color:#008000"></i> </button>
+								</div>
+								<div class="col-md-4 text-center">
+									<div class="form-group ">
+										<div class="input-group mb-2">
+												<div class="input-group-prepend">
+													<div class="input-group-text"><i class="fas fa-check"></i></div>
+												</div>
+												<input type="text" size="4" class="form-control" tabindex="4" placeholder="Código de validación" name="captchacode" value="" _data-toggle="tooltip" data-placement="right" data-delay="15" title="Indique el texto visualizado en la imagen" autocomplete="off">
+										</div>
+									</div>
+								</div>
+											
+								<!-- no hace nada <div class="col-md-2"></div> -->
+
+								<div class="col-md-3 text-center">
+										<button type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
+										&nbsp; 
+										<button type="button" name="info" class="btn btn-sm btn-info" data-toggle="modal" data-target="#infoModal">		<i class="fas fa-info-circle"></i></button>
+										&nbsp; 
+										<button type="button" name="legal" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#legalModal">	<i class="fas fa-balance-scale"></i></button>
+								</div>
+							</div>
+				
+							<br>
+										
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<input type="submit" value="Consultar" tabindex="5" name="Bbus" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">
+									&nbsp; &nbsp; &nbsp;
+									<button type="reset" class="btn btn-outline-primary" title="Restablece los datos de búsqueda...">Restablecer</button>
+								</div>
+							</div>
+									
+					</form>
+				
+					<!-- PIE -->					
+					<div class="card-footer cne-pie-bg"> 
+						<div class="row">
+							(c) 2007-2018 - Poder Judicial de la Nación - Cámara Nacional Electoral						
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>	
+</div>				
+
+
+</body>
+</html>
