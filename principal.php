@@ -1,3 +1,8 @@
+<?php
+   ini_set('display_errors', 1);
+   include("conexion.php");
+   $con=conectar();
+?>
 <!DOCTYPE html>
 <html  xml:lang="es" lang="es-es">
 <head>

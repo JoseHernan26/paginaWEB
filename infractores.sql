@@ -1,8 +1,8 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-DROP DATABASE IF EXISTS `bd-base-datos-ing web-21`;
-CREATE DATABASE `bd-base-datos-ing web-21` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bd-base-datos-ing web-21`;
+DROP DATABASE IF EXISTS `infractores`;
+CREATE DATABASE `infractores` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `infractores`;
 
 -- Estructura de la tabla Personas:
 CREATE TABLE Personas (
