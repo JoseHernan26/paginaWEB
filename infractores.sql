@@ -9,7 +9,7 @@ CREATE TABLE Personas (
 	P_Dni integer NOT NULL AUTO_INCREMENT,
     P_Nombre varchar(50) NOT NULL,
     P_Apellido varchar(50) NOT NULL,
-    P_Sexo varchar(60) NOT NULL,
+    P_Sexo ENUM('M','F',' ') NOT NULL,
     P_CantDeudas integer NULL DEFAULT 0,
     P_IdDistrito integer NOT NULL,
     PRIMARY KEY (P_Dni,P_Sexo)
@@ -93,15 +93,15 @@ INSERT INTO Distritos VALUES (25, 'Argentinos en el Exterior');
 --
 -- inserts into Personas
 --
-INSERT INTO Personas VALUES (11111111, 'Juana ','Primero', 'Femenimo',0 ,18);
-INSERT INTO Personas VALUES (11111112, 'Juana ','Segundo','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111113, 'Juana' ,'Tercero','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111114, 'Juana', 'Cuarto','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111115,'Juana', 'Quinto','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111116,'Juan', 'Sexto', 'Masculino',0,18);
-INSERT INTO Personas VALUES (11111117,'Juan' , 'Septimo', 'Masculino',0,18);
-INSERT INTO Personas VALUES (11111118,'Juan', 'Octavo','Masculino',0,18);
-INSERT INTO Personas VALUES (11111119, 'Juan' ,'Noveno', 'Masculino',0,18);
+INSERT INTO Personas VALUES (11111111, 'Juana ','Primero', 'F',0 ,18);
+INSERT INTO Personas VALUES (11111112, 'Juana ','Segundo','F',0,18);
+INSERT INTO Personas VALUES (11111113, 'Juana' ,'Tercero','F',0,18);
+INSERT INTO Personas VALUES (11111114, 'Juana', 'Cuarto','F',0,18);
+INSERT INTO Personas VALUES (11111115,'Juana', 'Quinto','F',0,18);
+INSERT INTO Personas VALUES (11111116,'Juan', 'Sexto', 'M',0,18);
+INSERT INTO Personas VALUES (11111117,'Juan' , 'Septimo', 'M',0,18);
+INSERT INTO Personas VALUES (11111118,'Juan', 'Octavo','M',0,18);
+INSERT INTO Personas VALUES (11111119, 'Juan' ,'Noveno', 'M',0,18);
 
 --
 -- inserts into Mesa_Votacion

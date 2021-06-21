@@ -1,7 +1,6 @@
 <?php
    ini_set('display_errors', 1);
-   include("conexion.php");
-   $con=conectar();
+   include("conexion.php");    
 ?>
 <!DOCTYPE html>
 <html  xml:lang="es" lang="es-es">
@@ -169,14 +168,34 @@
 
 
 							<div class="row">
-								<div class="col-md-12 text-center">
-									<input type="submit" value="Consultar" tabindex="5" name="Bbus" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">
+							        <div class="col-md-12 text-center">
+									<input type="submit" value="Consultar" tabindex="5" name="buscalo" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">
 									&nbsp; &nbsp; &nbsp;
 									<button type="reset" class="btn btn-outline-primary" title="Restablece los datos de búsqueda...">Restablecer</button>
-								</div>
-							</div>
-									
+<?php
+   if(isset($_POST['buscalo'])){
+      $con = conectar();
+      $dni = $_POST['Emat'];
+      $sexo = $_POST['Esex'];
+      $prov = $_POST['Epro'];
+      $resul = mysqli_query($con,"SELECT * FROM Personas WHERE P_Dni=$dni AND P_Sexo='$sexo'");
+      $resul = mysqli_fetch_array($resul);
+      if($resul != FALSE){
+	 $msj = "Nombre: ".$resul['P_Nombre']." ".$resul['P_Apellido'];
+      
+	 echo '<script>alert("'.$msj.'")</script>';
+      }
+      else{
+	 echo '<script>alert("NO SE ENCUENTRA REGISTRADO!")</script>';
+      } 
+   } 
+?>
+
+						      </div>
+						</div>			
 					</form>
+
+
 
 
 					<script type="text/javascript" language="JavaScript1.1">
@@ -753,3 +772,5 @@
 </div>
 </body>
 </html>
+
+

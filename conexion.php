@@ -1,14 +1,13 @@
 <?php
 function conectar(){
-   $srvr = "127.0.0.1";
+   $srvr = "localhost";
    $user = "root";
    $pswd = "";
    $bd = "infractores";
-   $con = new mysqli($srvr, $user, $pswd, $bd) or die("Error de conexion:" . mysql_connect_error()); 
+   $port = 3306;
+   $con = new mysqli($srvr, $user, $pswd, $bd,$port) or die("Error de conexion:".mysql_connect_error()); 
    return $con;
 }
-
- 
 ?>
 
 
