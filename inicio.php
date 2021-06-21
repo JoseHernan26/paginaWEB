@@ -22,23 +22,25 @@
 	<link rel="stylesheet" type="text/css" href="css/sec.css">
 	<link rel="stylesheet" type="text/css" href="css/principal.css">
 
-	<!---botones informacionales---->
+	<!---botones informacionales-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <!-- parte 1 del tuto para el captcha -->
- 
- <script
-	  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-	  crossorigin="anonymous"></script>
+        <!-- parte 1 del tuto para el captcha -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
  
 	<!-- Cambia 6LcZu9QUAAAAACaj-WBiVIQUlr94vfCC8DUpIanS por tu clave de sitio web -->
+<<<<<<< HEAD
     <script src="https://www.google.com/recaptcha/api.js?render=6Lc6EEgbAAAAAGtycCRxOfcqB3Su3bQI8LTbn7ul"></script>
 
 
 
  
+=======
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lc6EEgbAAAAAGtycCRxOfcqB3Su3bQI8LTbn7ul"></script>
+
+        <!--
+>>>>>>> e243e7e10b2257820968f36c49b292459d50f23d
 	<script type="text/javascript">
 		$(function () {
 			$('[data-toggle="tooltip"]').tooltip()
@@ -50,9 +52,10 @@
 		function onSubmit(token) {
 		  document.getElementById("ingWeb").submit();
 		}
-	  </script>
+	  </script> -->
 
 </head>
+
 <body>
    <div class="container-fluid">
       <div class="row justify-content-center">
@@ -113,64 +116,68 @@
 					<form id="ingWeb" name="dgt" method="post" action="secundario.php" >
 						<!--  sacamos onsubmit="return validar_form(this);" al lado de actiion  -->
 							<div class="row">
-								<div class="col-md-4">
-									<div class="form-group">
-											<div class="input-group mb-2">
-											<div class="input-group-prepend">
-											<div class="input-group-text">
-											<i class="fas fa-id-card"></i></div>
-											</div>
-											<input type="text" tabindex="1" value="" name="Emat" class="form-control" id="matricula" placeholder="Documento N°" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Ingrese su Nº de documento SIN puntos ni letras...">
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-md-4">
-									<div class="form-group">
-										<div class="input-group mb-2">
-											<div class="input-group-prepend">
-												<div class="input-group-text"></div>
-											</div>
-											<select tabindex="2" id="sexo" class="form-control" size="1" name="Esex" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Seleccione su sexo...">
-												<option value=" ">Sexo</option>
-												<option value="F">Femenino</option>	 						 
-												<option value="M">Masculino</option>	 						 
-											</select>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="form-group">
-										<div class="input-group mb-2">
-											<div class="input-group-prepend">
-												<div class="input-group-text">
-													<i class="fas fa-map-marker-alt"></i>  
-												</div>
-											</div>
-											<select tabindex="3" class="form-control" value="" name="Epro" size="1" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Seleccione la provincia que corresponde a su ultimo domicilio...">
-											<option value="0">Distrito Electoral</option><option style="" value="01">Capital Federal</option><option style="" value="02">Buenos Aires</option><option style="" value="03">Catamarca</option><option style="" value="04">Córdoba</option><option style="" value="05">Corrientes</option><option style="" value="06">Chaco</option><option style="" value="07">Chubut</option><option style="" value="08">Entre Ríos</option><option style="" value="09">Formosa</option><option style="" value="10">Jujuy</option><option style="" value="11">La Pampa</option><option style="" value="12">La Rioja</option><option style="" value="13">Mendoza</option><option style="" value="14">Misiones</option><option style="" value="15">Neuquen</option><option style="" value="16">Río Negro</option><option style="" value="17">Salta</option><option style="" value="18">San Juan</option><option style="" value="19">San Luis</option><option style="" value="20">Santa Cruz</option><option style="" value="21">Santa Fe</option><option style="" value="22">Santiago del Estero</option><option style="" value="23">Tucumán</option><option style="" value="24">Tierra del Fuego</option><option style="" value="30">Argentinos en el Exterior</option> </select>  
-										</div>
-									</div>
-								</div>
-							</div>
-								
-
 							
-							<div class="row">
+								
+								<div class="col-md-4 text-center">
+									<div class="form-group ">
+										<div class="input-group mb-2">
+										    <div class="input-group-prepend">
+												<div class="input-group-text"> 
+													<img src="imagenes/DNI_50.png"  width="20" height="20">		
+												</div>
+													<input type="text" tabindex="1" value="" name="Emat" class="form-control" id="matricula" placeholder="Documento N°" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Ingrese su Nº de documento SIN puntos ni letras...">
+										
+											</div>
+										</div>	
+									</div>
+								</div>
+
+
 
 								<div class="col-md-4 text-center">
 									<div class="form-group ">
 										<div class="input-group mb-2">
-												<div class="input-group-prepend">
-													<div class="input-group-text"><i class="fas fa-check"></i></div>
+										    <div class="input-group-prepend">
+												<div class="input-group-text">  
+													<img src="imagenes/persona_50.png"  width="20" height="20">						
 												</div>
-												<input type="text" size="4" class="form-control" tabindex="4" placeholder="Código de validación" name="captchacode" value="" _data-toggle="tooltip" data-placement="right" data-delay="15" title="Indique el texto visualizado en la imagen" autocomplete="off">
-										</div>
+												
+													<select tabindex="2" id="sexo" class="form-control" size="1" name="Esex" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Seleccione su sexo...">
+																<option value=" ">Sexo</option>
+																<option value="F">Femenino</option>	 						 
+																<option value="M">Masculino</option>	 						 
+													</select>
+										
+											</div>
+										</div>	
 									</div>
 								</div>
-											
-								<!-- no hace nada <div class="col-md-2"></div> -->
+
+
+
+								<div class="col-md-4 text-center">
+									<div class="form-group ">
+										<div class="input-group mb-2">
+										    <div class="input-group-prepend">
+												<div class="input-group-text">
+
+												<img src="imagenes/ubicacion_50.png"  width="20" height="20">											
+												</div>
+												<select tabindex="3" class="form-control" value="" name="Epro" size="1" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Seleccione la provincia que corresponde a su ultimo domicilio...">
+												<option value="0">Distrito Electoral</option><option style="" value="01">Capital Federal</option><option style="" value="02">Buenos Aires</option><option style="" value="03">Catamarca</option><option style="" value="04">Córdoba</option><option style="" value="05">Corrientes</option><option style="" value="06">Chaco</option><option style="" value="07">Chubut</option><option style="" value="08">Entre Ríos</option><option style="" value="09">Formosa</option><option style="" value="10">Jujuy</option><option style="" value="11">La Pampa</option><option style="" value="12">La Rioja</option><option style="" value="13">Mendoza</option><option style="" value="14">Misiones</option><option style="" value="15">Neuquen</option><option style="" value="16">Río Negro</option><option style="" value="17">Salta</option><option style="" value="18">San Juan</option><option style="" value="19">San Luis</option><option style="" value="20">Santa Cruz</option><option style="" value="21">Santa Fe</option><option style="" value="22">Santiago del Estero</option><option style="" value="23">Tucumán</option><option style="" value="24">Tierra del Fuego</option><option style="" value="30">Argentinos en el Exterior</option> </select>	
+										
+											</div>
+										</div>	
+									</div>
+								</div>
+								
+							</div> <!-- CIERRA EL ROW-->
+								
+
+							
+							<div class="row">
+								
+								<div class="col-md-2"></div>
 
 								<div class="col-md-3 text-center">
 										<button type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal"><img src="imagenes/amarillo_50.png" width="22" height="22">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
@@ -194,10 +201,16 @@
 							</div>
 									
 					</form>
+<<<<<<< HEAD
 					<script>
     $('#ingWeb').submit(function(event) {
         event.preventDefault();
         /*Cambia 6LcZu9QUAAAAACaj-WBiVIQUlr94vfCC8DUpIanS por tu clave de sitio web*/
+=======
+<script>
+    $('#ingWeb').submit(function(event) {
+        event.preventDefault();
+>>>>>>> e243e7e10b2257820968f36c49b292459d50f23d
         grecaptcha.ready(function() {
             grecaptcha.execute('6Lc6EEgbAAAAAGtycCRxOfcqB3Su3bQI8LTbn7ul', {action: 'registro'}).then(function(token) {
                 $('#ingWeb').prepend('<input type="hidden" name="token" value="' + token + '">');
