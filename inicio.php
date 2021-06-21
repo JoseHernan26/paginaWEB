@@ -70,30 +70,6 @@
 				</div>
 				
 				<div class="card-body">
-
-					<script>
-						(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-						})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-					  	ga('create', 'UA-67132760-1', 'auto');
-						ga('send', 'pageview');
-					  
-					</script>
-				  
-				    <script type="text/javascript" language="JavaScript1.1">
-					  function fococaptcha() 
-					  {
-						document.dgt.captchacode.select();  
-						document.dgt.captchacode.focus();  
-					  }
-					  
-					  function ventana(URL){
-						window.open(URL,'','left=10,top=10,width=780,height=550,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,dependent=0,titlebar=0,fullscreen=0');
-					  }
-				    </script>
-
-
 					<form id="ingWeb" name="dgt" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						<!--  sacamos onsubmit="return validar_form(this);" al lado de actiion  -->
 							<div class="row">
@@ -112,9 +88,6 @@
 										</div>	
 									</div>
 								</div>
-
-
-
 								<div class="col-md-4 text-center">
 									<div class="form-group ">
 										<div class="input-group mb-2">
@@ -128,7 +101,6 @@
 																<option value="F">Femenino</option>	 						 
 																<option value="M">Masculino</option>	 						 
 													</select>
-										
 											</div>
 										</div>	
 									</div>
@@ -224,21 +196,13 @@
 	}
 
 ?>
-
-
-
 					<script type="text/javascript" language="JavaScript1.1">
 						document.getElementById('captcha').src = 'captcha/securimage_show.php?' + Math.random(); 
 					</script>
-					
 					<script type="text/javascript" language="JavaScript1.1">
 						document.dgt.Emat.select();  
 						document.dgt.Emat.focus();  
 					</script>
-						
-					
-					<!-- VENTANAS MODALES -->
-					<!-- Modal  Ayuda-->
 					<div class="modal fade" id="ayudaModal" tabindex="-1" role="dialog" aria-labelledby="ayuda" aria-hidden="true" style="display: none;">
 					  <div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -278,8 +242,6 @@
 						</div>
 					  </div>
 					</div>
-					
-					<!-- Modal  Info-->
 					<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="informacion" aria-hidden="true" style="display: none;">
 					  <div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -652,7 +614,6 @@
 					  </div>
 					</div>
 					
-					<!-- Modal  Legal-->
 					<div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-labelledby="legislacion" aria-hidden="true" style="display: none;">
 					  <div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -673,8 +634,6 @@
 					<table class="table">
 					<tbody><tr>
 					<td align="center">
-					
-					
 					<div style="text-align: justify;"><span style="font-weight: bold;">Artículo 12.</span>- <span style="font-weight: bold;">Deber de votar.</span> Todo elector tiene el deber de votar en la elección nacional que se realice en su distrito.<br>
 					Quedan exentos de esa obligación:<br>
 					a) Los jueces y sus auxiliares que por imperio de esta ley deban
@@ -747,14 +706,9 @@
 					provinciales, de la Ciudad Autónoma de Buenos Aires o municipales. Este
 					plazo comenzará a correr a partir del vencimiento de sesenta (60) días
 					establecido en el primer párrafo del artículo 125.<br>
-					
-					
 					</div>
-					
-					
 					</td></tr></tbody></table>
 						  </center></div>
-						  
 						</div>
 					   </div>
 					   <div class="modal-footer">
@@ -763,7 +717,6 @@
 					   </div>
 					  </div>
 					</div>
-					
 					<script type="text/javascript">
 					$('#ayudaModal').on('shown.bs.modal', function () {
 					$('#myInput').trigger('focus')
@@ -777,14 +730,6 @@
 					$('#myInput').trigger('focus')
 					})
 					</script>	
-
-
-
-
-
-
-
-					<!-- PIE -->					
 					<div class="card-footer cne-pie-bg"> 
 						<div class="row">
 							(c) 2007-2018 - Poder Judicial de la Nación - Cámara Nacional Electoral						
