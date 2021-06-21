@@ -14,15 +14,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 
+	
+	<link rel="stylesheet" type="text/css" href="css/sec.css">
+	<link rel="stylesheet" type="text/css" href="css/principal.css">
+
 	<!---botones informacionales---->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
 
-
-	<link rel="stylesheet" type="text/css" href="css/sec.css">
-	<link rel="stylesheet" type="text/css" href="css/principal.css">
 
 	<script type="text/javascript">
 		$(function () {
@@ -30,6 +30,12 @@
 		})
 	</script>
 
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<script>
+		function onSubmit(token) {
+		  document.getElementById("ingWeb").submit();
+		}
+	  </script>
 
 </head>
 <body>
@@ -89,7 +95,7 @@
 				    </script>
 
 
-					<form name="dgt" method="post" action="" onsubmit="return validar_form(this);">
+					<form id="ingWeb" name="dgt" method="post" action="" onsubmit="return validar_form(this);">
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
@@ -107,7 +113,7 @@
 									<div class="form-group">
 										<div class="input-group mb-2">
 											<div class="input-group-prepend">
-												<div class="input-group-text"><i class="fas fa-street-view"></i></div>
+												<div class="input-group-text"></div>
 											</div>
 											<select tabindex="2" id="sexo" class="form-control" size="1" name="Esex" data-toggle="tooltip" data-placement="top" title="" data-delay="5" data-original-title="Seleccione su sexo...">
 												<option value=" ">Sexo</option>
@@ -136,11 +142,7 @@
 
 							
 							<div class="row">
-								<div class="col-md-3 text-center">
-									<img src="captcha/securimage_show.php?" width="120" height="45" id="captcha" alt="Generando imagen..." title="Imagen de seguridad. Complete el campo asociado...">
-									<button onclick="document.getElementById('captcha').src ='captcha/securimage_show.php?'+ Math.random();fococaptcha();return false" type="button" class="btn btn-sm btn-outline-success">	
-										<i class="fas fa-sync" style="color:#008000"></i> </button>
-								</div>
+
 								<div class="col-md-4 text-center">
 									<div class="form-group ">
 										<div class="input-group mb-2">
@@ -155,11 +157,11 @@
 								<!-- no hace nada <div class="col-md-2"></div> -->
 
 								<div class="col-md-3 text-center">
-										<button type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal"><img src="">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
+										<button type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal"><img src="imagenes/amarillo_50.png" width="22" height="22">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
 										&nbsp; 
-										<button type="button" name="info" class="btn btn-sm btn-info" data-toggle="modal" data-target="#infoModal">		<i class="fas fa-info-circle"></i></button>
+										<button type="button" name="info" class="btn btn-sm btn-info" data-toggle="modal" data-target="#infoModal">	<img src="imagenes/Informacion_50.png" width="20" height="20">	<i class="fas fa-info-circle"></i></button>
 										&nbsp; 
-										<button type="button" name="legal" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#legalModal">	<i class="fas fa-balance-scale"></i></button>
+										<button type="button" name="legal" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#legalModal">	<img src="imagenes/balanza_50.png" width="20" height="20"><i class="fas fa-balance-scale"></i></button>
 								</div>
 							</div>
 				
@@ -168,8 +170,8 @@
 							
 							<div class="row">
 								<div class="col-md-12 text-center">
-									<input type="submit" value="Consultar" tabindex="5" name="Bbus" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">
 									&nbsp; &nbsp; &nbsp;
+									<button class="g-recaptcha"   data-sitekey="reCAPTCHA_site_key"   data-callback='onSubmit'    data-action='submit' title="Proceder a realizar la búsqueda con los datos ingresados...">Consultar</button>
 									<button type="reset" class="btn btn-outline-primary" title="Restablece los datos de búsqueda...">Restablecer</button>
 								</div>
 							</div>
