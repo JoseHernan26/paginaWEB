@@ -1,9 +1,13 @@
+<?php
+   ini_set('display_errors', 1);
+   include("conexion.php");    
+?>
 <!DOCTYPE html>
 <html  xml:lang="es" lang="es-es">
 <head>
 	<title></title>
 
-	<!-- un ejemplito-->
+	
 	<title>Justicia Nacional Electoral - REGISTRO DE INFRACTORES</title>
 	<meta http-equiv="Cache-Control" content="max-age=31536000">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,6 +20,16 @@
 
 	<link rel="stylesheet" type="text/css" href="css/sec.css">
 	<link rel="stylesheet" type="text/css" href="css/principal.css">
+
+	<!---botones informacionales---->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+
+
+
+
 
 	<script type="text/javascript">
 		$(function () {
@@ -80,8 +94,6 @@
 						window.open(URL,'','left=10,top=10,width=780,height=550,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,dependent=0,titlebar=0,fullscreen=0');
 					  }
 				    </script>
-  <!-- mira-->
-
 
 
 					<form name="dgt" method="post" action="" onsubmit="return validar_form(this);">
@@ -128,7 +140,8 @@
 								</div>
 							</div>
 								
-								
+
+							
 							<div class="row">
 								<div class="col-md-3 text-center">
 									<img src="captcha/securimage_show.php?" width="120" height="45" id="captcha" alt="Generando imagen..." title="Imagen de seguridad. Complete el campo asociado...">
@@ -149,30 +162,46 @@
 								<!-- no hace nada <div class="col-md-2"></div> -->
 
 								<div class="col-md-3 text-center">
-										<button type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
+										<button onclick="prueba()" type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal"><img src="imagenes/amarillo_50.png"   alt="25" width="25">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
 										&nbsp; 
-										<button type="button" name="info" class="btn btn-sm btn-info" data-toggle="modal" data-target="#infoModal">		<i class="fas fa-info-circle"></i></button>
+										<button onclick="prueba()" type="button" name="info" class="btn btn-sm btn-info" data-toggle="modal" data-target="#infoModal"><img src="imagenes/Informacion_50.png" alt="25" width="25">		<i class="fas fa-info-circle"></i></button>
 										&nbsp; 
-										<button type="button" name="legal" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#legalModal">	<i class="fas fa-balance-scale"></i></button>
+										<button onclick="prueba()" type="button" name="legal" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#legalModal"><img src="imagenes/balanza_50.png" alt="25" width="25">	<i class="fas fa-balance-scale"></i></button>
 								</div>
 							</div>
 				
 							<br>
 								
 							
-
-
-
-
 							<div class="row">
-								<div class="col-md-12 text-center">
-									<input type="submit" value="Consultar" tabindex="5" name="Bbus" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">
+							        <div class="col-md-12 text-center">
+									<input type="submit" value="Consultar" tabindex="5" name="buscalo" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">
 									&nbsp; &nbsp; &nbsp;
 									<button type="reset" class="btn btn-outline-primary" title="Restablece los datos de búsqueda...">Restablecer</button>
-								</div>
-							</div>
-									
+<?php
+   if(isset($_POST['buscalo'])){
+      $con = conectar();
+      $dni = $_POST['Emat'];
+      $sexo = $_POST['Esex'];
+      $prov = $_POST['Epro'];
+      $resul = mysqli_query($con,"SELECT * FROM Personas WHERE P_Dni=$dni AND P_Sexo='$sexo'");
+      $resul = mysqli_fetch_array($resul);
+      if($resul != FALSE){
+	 $msj = "Nombre: ".$resul['P_Nombre']." ".$resul['P_Apellido'];
+      
+	 echo '<script>alert("'.$msj.'")</script>';
+      }
+      else{
+	 echo '<script>alert("NO SE ENCUENTRA REGISTRADO!")</script>';
+      } 
+   } 
+?>
+
+						      </div>
+						</div>			
 					</form>
+
+
 
 
 					<script type="text/javascript" language="JavaScript1.1">
@@ -713,6 +742,8 @@
 					</div>
 					
 					<script type="text/javascript">
+					
+
 					$('#ayudaModal').on('shown.bs.modal', function () {
 					$('#myInput').trigger('focus')
 					})
@@ -749,3 +780,5 @@
 </div>
 </body>
 </html>
+
+
