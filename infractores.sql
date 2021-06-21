@@ -1,15 +1,15 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-DROP DATABASE IF EXISTS `bd-base-datos-ing web-21`;
-CREATE DATABASE `bd-base-datos-ing web-21` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bd-base-datos-ing web-21`;
+DROP DATABASE IF EXISTS `infractores`;
+CREATE DATABASE `infractores` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `infractores`;
 
 -- Estructura de la tabla Personas:
 CREATE TABLE Personas (
 	P_Dni integer NOT NULL AUTO_INCREMENT,
     P_Nombre varchar(50) NOT NULL,
     P_Apellido varchar(50) NOT NULL,
-    P_Sexo varchar(60) NOT NULL,
+    P_Sexo ENUM('M','F',' ') NOT NULL,
     P_CantDeudas integer NULL DEFAULT 0,
     P_IdDistrito integer NOT NULL,
     PRIMARY KEY (P_Dni,P_Sexo)
@@ -64,44 +64,44 @@ CREATE TABLE Multas_Persona (
 --
 -- inserts : INSERT INTO distritos VALUES (1,'capital')
 --
-INSERT INTO distritos VALUES (1,'Capital Federal');
-INSERT INTO distritos VALUES (2,'Buenos Aires');
-INSERT INTO distritos VALUES (3,'Catamarca');
-INSERT INTO distritos VALUES (4, 'Cordoba');
-INSERT INTO distritos VALUES (5, 'Corrientes');
-INSERT INTO distritos VALUES (6,'Chaco');
-INSERT INTO distritos VALUES (7,'Chubut');
-INSERT INTO distritos VALUES (8,'Entre Rios');
-INSERT INTO distritos VALUES (9,'Formosa');
-INSERT INTO distritos VALUES (10, 'Jujuy');
-INSERT INTO distritos VALUES (11,'La Pampa');
-INSERT INTO distritos VALUES (12,'La Rioja');
-INSERT INTO distritos VALUES (13,'Mendoza');
-INSERT INTO distritos VALUES (14,'Misiones');
-INSERT INTO distritos VALUES (15,'Neuquen');
-INSERT INTO distritos VALUES (16,'Rio Negro');
-INSERT INTO distritos VALUES (17,'Salta');
-INSERT INTO distritos VALUES (18,'San Juan');
-INSERT INTO distritos VALUES (19, 'San Luis');
-INSERT INTO distritos VALUES (20, 'Santa Cruz');
-INSERT INTO distritos VALUES (21, 'Santa Fe');
-INSERT INTO distritos VALUES (22, 'Santiago del Estero');
-INSERT INTO distritos VALUES (23, 'Tucuman');
-INSERT INTO distritos VALUES (24, 'Tierra del Fuego');
-INSERT INTO distritos VALUES (25, 'Argentinos en el Exterior');
+INSERT INTO Distritos VALUES (1,'Capital Federal');
+INSERT INTO Distritos VALUES (2,'Buenos Aires');
+INSERT INTO Distritos VALUES (3,'Catamarca');
+INSERT INTO Distritos VALUES (4, 'Cordoba');
+INSERT INTO Distritos VALUES (5, 'Corrientes');
+INSERT INTO Distritos VALUES (6,'Chaco');
+INSERT INTO Distritos VALUES (7,'Chubut');
+INSERT INTO Distritos VALUES (8,'Entre Rios');
+INSERT INTO Distritos VALUES (9,'Formosa');
+INSERT INTO Distritos VALUES (10, 'Jujuy');
+INSERT INTO Distritos VALUES (11,'La Pampa');
+INSERT INTO Distritos VALUES (12,'La Rioja');
+INSERT INTO Distritos VALUES (13,'Mendoza');
+INSERT INTO Distritos VALUES (14,'Misiones');
+INSERT INTO Distritos VALUES (15,'Neuquen');
+INSERT INTO Distritos VALUES (16,'Rio Negro');
+INSERT INTO Distritos VALUES (17,'Salta');
+INSERT INTO Distritos VALUES (18,'San Juan');
+INSERT INTO Distritos VALUES (19, 'San Luis');
+INSERT INTO Distritos VALUES (20, 'Santa Cruz');
+INSERT INTO Distritos VALUES (21, 'Santa Fe');
+INSERT INTO Distritos VALUES (22, 'Santiago del Estero');
+INSERT INTO Distritos VALUES (23, 'Tucuman');
+INSERT INTO Distritos VALUES (24, 'Tierra del Fuego');
+INSERT INTO Distritos VALUES (25, 'Argentinos en el Exterior');
 
 --
 -- inserts into Personas
 --
-INSERT INTO Personas VALUES (11111111, 'Juana ','Primero', 'Femenimo',0 ,18);
-INSERT INTO Personas VALUES (11111112, 'Juana ','Segundo','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111113, 'Juana' ,'Tercero','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111114, 'Juana', 'Cuarto','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111115,'Juana', 'Quinto','Femenimo',0,18);
-INSERT INTO Personas VALUES (11111116,'Juan', 'Sexto', 'Masculino',0,18);
-INSERT INTO Personas VALUES (11111117,'Juan' , 'Septimo', 'Masculino',0,18);
-INSERT INTO Personas VALUES (11111118,'Juan', 'Octavo','Masculino',0,18);
-INSERT INTO Personas VALUES (11111119, 'Juan' ,'Noveno', 'Masculino',0,18);
+INSERT INTO Personas VALUES (11111111, 'Juana ','Primero', 'F',0 ,18);
+INSERT INTO Personas VALUES (11111112, 'Juana ','Segundo','F',0,18);
+INSERT INTO Personas VALUES (11111113, 'Juana' ,'Tercero','F',0,18);
+INSERT INTO Personas VALUES (11111114, 'Juana', 'Cuarto','F',0,18);
+INSERT INTO Personas VALUES (11111115,'Juana', 'Quinto','F',0,18);
+INSERT INTO Personas VALUES (11111116,'Juan', 'Sexto', 'M',0,18);
+INSERT INTO Personas VALUES (11111117,'Juan' , 'Septimo', 'M',0,18);
+INSERT INTO Personas VALUES (11111118,'Juan', 'Octavo','M',0,18);
+INSERT INTO Personas VALUES (11111119, 'Juan' ,'Noveno', 'M',0,18);
 
 --
 -- inserts into Mesa_Votacion
