@@ -18,15 +18,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 
-	<!---botones informacionales---->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-
-
 	<link rel="stylesheet" type="text/css" href="css/sec.css">
 	<link rel="stylesheet" type="text/css" href="css/principal.css">
+
+	<!---botones informacionales---->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+
+
+
+
 
 	<script type="text/javascript">
 		$(function () {
@@ -159,11 +162,11 @@
 								<!-- no hace nada <div class="col-md-2"></div> -->
 
 								<div class="col-md-3 text-center">
-										<button type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal"><img src="">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
+										<button onclick="prueba()" type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal"><img src="imagenes/amarillo_50.png"   alt="25" width="25">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
 										&nbsp; 
-										<button type="button" name="info" class="btn btn-sm btn-info" data-toggle="modal" data-target="#infoModal">		<i class="fas fa-info-circle"></i></button>
+										<button onclick="prueba()" type="button" name="info" class="btn btn-sm btn-info" data-toggle="modal" data-target="#infoModal"><img src="imagenes/Informacion_50.png" alt="25" width="25">		<i class="fas fa-info-circle"></i></button>
 										&nbsp; 
-										<button type="button" name="legal" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#legalModal">	<i class="fas fa-balance-scale"></i></button>
+										<button onclick="prueba()" type="button" name="legal" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#legalModal"><img src="imagenes/balanza_50.png" alt="25" width="25">	<i class="fas fa-balance-scale"></i></button>
 								</div>
 							</div>
 				
@@ -739,6 +742,8 @@
 					</div>
 					
 					<script type="text/javascript">
+					
+
 					$('#ayudaModal').on('shown.bs.modal', function () {
 					$('#myInput').trigger('focus')
 					})
