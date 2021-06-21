@@ -1,0 +1,105 @@
+function validar_form(fobj) 
+{
+
+//specify valid referrals for script to accept
+
+/*
+var validreferrals=new Array()
+validreferrals[0]="http://localhost/cne/consulta/index.php"
+validreferrals[1]="http://localhost/padronx/inicio.php"
+validreferrals[2]="http://localhost/padronx/2011muestra.php"
+validreferrals[3]="http://www.padron.gob.ar/index.php"
+validreferrals[4]="http://www.padron.gob.ar/index.php/inicio.php"
+validreferrals[5]="http://www.padron.gob.ar/index.php/2011muestra.php"
+validreferrals[6]="http://www.padron.gov.ar/index.php"
+validreferrals[7]="http://www.padron.gov.ar/index.php/inicio.php"
+validreferrals[8]="http://www.padron.gov.ar/index.php/2011muestra.php"
+var passed=0
+for (r=0;r<validreferrals.length;r++){
+if (document.referrer.indexOf(validreferrals[r])!=-1){
+	passed=0
+	break
+}
+}
+if (passed==0){
+ alert("ATENCION: Acceso denegado desde la página "+document.referrer+" \n\n Acceda por www.padron.gob.ar"+" \n\n Muchas gracias. PODER JUDICIAL DE LA NACION");
+ top.location.href = "http://www.padron.gob.ar"; 
+}
+*/	
+
+//-- Stop hiding script -->    	
+   	
+   	
+   	
+if (fobj.Emat.value=="") 
+{
+	alert("Ha omitido ingesar el N° de documento a buscar... \n\nVerifique y reintente");
+    fobj.Emat.select();
+    fobj.Emat.focus();  
+	return false;
+}
+
+if (typeof(fobj.Emat.value)=='undefined')    
+{        
+	alert("Ha ingresado caracteres no permitidos en el campo DOCUMENTO...\nIngrese solo NUMEROS sin puntos ni letras\n\nVerifique y reintente");
+	fobj.Emat.select();
+    fobj.Emat.focus();  
+    return false;    
+}    
+
+if (isNaN(fobj.Emat.value))    
+{        
+	alert("Ha ingresado un valor inválido en el campo DOCUMENTO !\nIngrese solo NUMEROS, sin puntos ni letras...\n\nVerifique y reintente");
+	fobj.Emat.select();
+    fobj.Emat.focus();  
+    return false;    
+}    
+
+var expr = /^[\+\-]?[0-9]*$/;
+
+if (!expr.test(fobj.Emat.value)) 
+  {
+	alert("Ha ingresado caracteres no válidos en el campo DOCUMENTO...\nIngrese solo numeros sin puntos ni letras\n\nVerifique y reintente");
+	fobj.Emat.select();
+    fobj.Emat.focus();  
+    return false;    
+}
+
+if (fobj.Epro.value==0) 
+{
+	alert("Ha omitido seleccionar el Distrito... \n\nVerifique y reintente");
+    fobj.Epro.focus();  
+	return false;
+}
+
+if (fobj.captchacode.value=="") 
+{
+	alert("Ha omitido ingesar el código de validación... \n\nVerifique y reintente");
+    fobj.captchacode.select();
+    fobj.captchacode.focus();  
+	return false;
+}
+
+return;
+}
+
+
+/* antixss.js.php por Carlos Mesa*/
+function verifica_url(url)
+{
+        var host, path_info
+        host = 'http://'+location.host;
+        path_info = (location.pathname.indexOf('?') != -1) ? location.pathname.substring(0, location.pathname.indexOf('?')) : location.pathname;
+        query_string = (location.search) ? ((location.search.indexOf('#') != -1) ? location.search.substring(1, location.search.indexOf('#')) : location.search.substring(1)) : '';
+        /*host_and_path_info = document.referrer;*/
+        largo = host.length+path_info.length+query_string.length;
+        /*
+        alert('Host='+host);
+        alert('Path_info='+path_info);
+        alert('Query_string='+query_string);
+        alert('Largo='+largo);
+        */
+        if ( largo > 92 ) {
+                location.href=url;
+        }
+}
