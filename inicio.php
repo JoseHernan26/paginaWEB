@@ -22,23 +22,17 @@
 	<link rel="stylesheet" type="text/css" href="css/sec.css">
 	<link rel="stylesheet" type="text/css" href="css/principal.css">
 
-	<!---botones informacionales---->
+	<!---botones informacionales-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <!-- parte 1 del tuto para el captcha -->
- 
- <script
-	  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-	  crossorigin="anonymous"></script>
+        <!-- parte 1 del tuto para el captcha -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
  
 	<!-- Cambia 6LcZu9QUAAAAACaj-WBiVIQUlr94vfCC8DUpIanS por tu clave de sitio web -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc6EEgbAAAAAGtycCRxOfcqB3Su3bQI8LTbn7ul"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lc6EEgbAAAAAGtycCRxOfcqB3Su3bQI8LTbn7ul"></script>
 
-
-
- 
+        <!--
 	<script type="text/javascript">
 		$(function () {
 			$('[data-toggle="tooltip"]').tooltip()
@@ -50,9 +44,10 @@
 		function onSubmit(token) {
 		  document.getElementById("ingWeb").submit();
 		}
-	  </script>
+	  </script> -->
 
 </head>
+
 <body>
    <div class="container-fluid">
       <div class="row justify-content-center">
@@ -168,13 +163,13 @@
 									</div>
 								</div>
 								
-							</div> <!-- CIERRA EL ROW--->
+							</div> <!-- CIERRA EL ROW-->
 								
 
 							
 							<div class="row">
 								
-								<!-- no hace nada <div class="col-md-2"></div> -->
+								<div class="col-md-2"></div>
 
 								<div class="col-md-3 text-center">
 										<button type="button" name="ayuda" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#ayudaModal"><img src="imagenes/amarillo_50.png" width="22" height="22">	<i class="fas fa-question-circle" style="color:#fff"></i> </button>
@@ -198,10 +193,9 @@
 							</div>
 									
 					</form>
-					<script>
+<script>
     $('#ingWeb').submit(function(event) {
         event.preventDefault();
-        /*Cambia 6LcZu9QUAAAAACaj-WBiVIQUlr94vfCC8DUpIanS por tu clave de sitio web*/
         grecaptcha.ready(function() {
             grecaptcha.execute('6Lc6EEgbAAAAAGtycCRxOfcqB3Su3bQI8LTbn7ul', {action: 'registro'}).then(function(token) {
                 $('#ingWeb').prepend('<input type="hidden" name="token" value="' + token + '">');
