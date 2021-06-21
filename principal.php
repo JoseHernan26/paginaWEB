@@ -175,8 +175,7 @@
 							
 							<div class="row">
 							        <div class="col-md-12 text-center">
-									<input type="submit" value="Consultar" tabindex="5" name="buscalo" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">
-									&nbsp; &nbsp; &nbsp;
+							        <input type="submit" value="Consultar" tabindex="5" name="buscalo" class="btn btn-primary" title="Proceder a realizar la búsqueda con los datos ingresados...">&nbsp; &nbsp; &nbsp;
 									<button type="reset" class="btn btn-outline-primary" title="Restablece los datos de búsqueda...">Restablecer</button>
 <?php
    if(isset($_POST['buscalo'])){
@@ -184,15 +183,54 @@
       $dni = $_POST['Emat'];
       $sexo = $_POST['Esex'];
       $prov = $_POST['Epro'];
-      $resul = mysqli_query($con,"SELECT * FROM Personas WHERE P_Dni=$dni AND P_Sexo='$sexo'");
-      $resul = mysqli_fetch_array($resul);
-      if($resul != FALSE){
-	 $msj = "Nombre: ".$resul['P_Nombre']." ".$resul['P_Apellido'];
-      
-	 echo '<script>alert("'.$msj.'")</script>';
+      switch($prov){
+      case "01": $distrito="CAPITAL FEDERAL"; break;
+      case "02": $distrito="BUENOS AIRES"; break;
+      case "03": $distrito="CATAMARCA"; break;
+      case "04": $distrito="CORDOBA"; break;
+      case "05": $distrito="CORRIENTES"; break;
+      case "06": $distrito="CHACO"; break;
+      case "07": $distrito="CHUBUT"; break;
+      case "08": $distrito="ENTRE RIOS"; break;
+      case "09": $distrito="FORMOSA"; break;
+      case "10": $distrito="JUJUY"; break;
+      case "11": $distrito="LA PAMPA"; break;
+      case "12": $distrito="LA RIOJA"; break;
+      case "13": $distrito="MENDOZA"; break;
+      case "14": $distrito="MISIONES"; break; 
+      case "15": $distrito="NEUQUEN"; break;
+      case "16": $distrito="RIO NEGRO"; break;
+      case "17": $distrito="SALTA"; break;
+      case "18": $distrito="SAN JUAN"; break;
+      case "19": $distrito="SAN LUIS"; break;
+      case "20": $distrito="SANTA CRUZ"; break;
+      case "21": $distrito="SANTA FE"; break; 
+      case "22": $distrito="SANTIAGO DEL ESTERO"; break;
+      case "23": $distrito="TUCUMAN"; break;
+      case "24": $distrito="TIERRA DEL FUEGO"; break;
+      case "30": $distrito="ARGENTINOS EN EL EXTERIOR"; break;
+      }
+      $resul = mysqli_query($con,"SELECT 1 FROM Personas WHERE P_Dni=$dni AND P_Sexo='$sexo' AND P_IdDistrito=$prov");
+      if(mysqli_num_rows($resul)){
+	echo '<script>alert("SE ENCUENTRA REGISTRADO!")</script>';
       }
       else{
-	 echo '<script>alert("NO SE ENCUENTRA REGISTRADO!")</script>';
+	  echo '
+<div class="alert alert-danger text-center shadow" role="alert">
+	<div class="col-md-12 text-center">
+	  <i class="fas fa-times-circle fa-3x" style="color:red;"></i>
+	</div>    
+	<h3>
+    La matrícula ['.$dni.' '.$sexo.' ] no se ha localizado     <br>
+    en el padrón del distrito [ '.$distrito.' ]    </h3>
+
+    <br>
+	Si considera que esta situación es debido a un error u omisión en el <br>
+	Registro Nacional de Electores, consulta a la Secretaria Electoral del distrito ó a la Cámara Nacional Electoral								
+	<br>
+	Muchas gracias
+
+</div>';
       } 
    } 
 ?>
