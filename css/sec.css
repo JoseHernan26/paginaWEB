@@ -224,6 +224,8 @@ div {
 .mb-2,.my-2{
    margin-bottom:.5rem!important
 }
+
+
 .btn{
    display:inline-block;
    font-weight:400;
@@ -352,3 +354,13 @@ div {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+
+.input-group {
+   position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: stretch;
+   width: 100%;
+}
+
