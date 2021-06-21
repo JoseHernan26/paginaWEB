@@ -32,24 +32,13 @@
 	<!-- Cambia 6LcZu9QUAAAAACaj-WBiVIQUlr94vfCC8DUpIanS por tu clave de sitio web -->
         <script src="https://www.google.com/recaptcha/api.js?render=6Lc6EEgbAAAAAGtycCRxOfcqB3Su3bQI8LTbn7ul"></script>
 
-        <!--
-	<script type="text/javascript">
-		$(function () {
-			$('[data-toggle="tooltip"]').tooltip()
-		})
-	</script>
 
-	<script src="https://www.google.com/recaptcha/api.js"></script>
-	<script>
-		function onSubmit(token) {
-		  document.getElementById("ingWeb").submit();
-		}
-	  </script> -->
 
 </head>
 
 <body>
-   <div class="container-fluid">
+
+	<div class="container-fluid">
       <div class="row justify-content-center">
 	 <div class="col-md-8">
 
@@ -105,7 +94,7 @@
 				    </script>
 
 
-					<form id="ingWeb" name="dgt" method="post" action="secundario.php" >
+					<form id="ingWeb" name="dgt" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						<!--  sacamos onsubmit="return validar_form(this);" al lado de actiion  -->
 							<div class="row">
 							
@@ -205,8 +194,38 @@
         });
   });
   </script>
+ <?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-					
+		define("RECAPTCHA_V3_SECRET_KEY", '6Lc6EEgbAAAAABCiOdMLbrC81IIsoCGcr6poEg6s');
+		$token = $_POST['token'];
+		$action = $_POST['action'];
+		if(function_exists('curl_init') === false){
+			echo "cURL not enabled";
+		}		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => RECAPTCHA_V3_SECRET_KEY, 'response' => $token)));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($ch);
+		curl_close($ch);
+		$arrResponse = json_decode($response, true);	
+		if($arrResponse["success"] == '1' && $arrResponse["action"] == $action && $arrResponse["score"] >= 0.5) {
+			$dni = $_POST['Emat'];
+			$sexo = $_POST['Esex'];
+			$prov = $_POST['Epro'];
+			buscar($dni,$sexo,$prov);
+		}
+		else {			
+			echo "Lo siento, parece que eres un Robot";
+		}
+
+	}
+
+?>
+
+
 
 					<script type="text/javascript" language="JavaScript1.1">
 						document.getElementById('captcha').src = 'captcha/securimage_show.php?' + Math.random(); 
