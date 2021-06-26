@@ -44,24 +44,15 @@ CREATE TABLE Mesa_Votacion (
 CREATE TABLE Mesa_Persona (
 	Mp_Mv_id integer NOT NULL,
 	Mp_P_Dni integer NOT NULL,
+        Mp_D_id integer NOT NULL,
 	Mp_Estado ENUM('A','P') NOT NULL,
         Mp_P_Sexo ENUM('M','F',' ') NOT NULL,
+        Mp_Deuda float NOT NULL DEFAULT 0,
+        Mp_DeudaEstado varchar(50) NOT NULL,
         FOREIGN KEY (Mp_P_Dni, Mp_P_Sexo) REFERENCES Personas (P_Dni,P_Sexo),
         FOREIGN KEY (Mp_Mv_id) REFERENCES Mesa_Votacion (Mv_id),
-        PRIMARY KEY (Mp_Mv_id, Mp_P_Dni, Mp_P_Sexo)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
---
--- Estructura de la tabla Multas_Persona:
---
-CREATE TABLE Multas_Persona (
-	MuP_Mv_id integer AUTO_INCREMENT NOT NULL,
-	MuP_P_Dni integer NOT NULL,
-        MuP_P_Sexo ENUM('M','F',' ') NOT NULL,
-	MuP_Monto integer NOT NULL,
-	FOREIGN KEY (MuP_P_Dni, MuP_P_Sexo) REFERENCES Personas (P_Dni, P_Sexo),
-	FOREIGN KEY (MuP_Mv_id) REFERENCES Mesa_Votacion(Mv_id), 
-	PRIMARY KEY (MuP_Mv_id,MuP_P_Dni, MuP_P_Sexo)
+        FOREIGN KEY (Mp_D_id) REFERENCES Distritos (D_id),
+        PRIMARY KEY (Mp_Mv_id, Mp_P_Dni, Mp_P_Sexo, Mp_D_id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
@@ -121,11 +112,11 @@ INSERT INTO Mesa_Votacion VALUES (8,'2013-08-11','Generales 2013',18);
 --
 -- inserts into Mesa_Persona
 --
-INSERT INTO Mesa_Persona VALUES (1,11111111,'P','F');
-INSERT INTO Mesa_Persona VALUES (2,11111112,'P','F');
-INSERT INTO Mesa_Persona VALUES (3,11111113,'P','F');
-INSERT INTO Mesa_Persona VALUES (4,11111114,'P','F');
-INSERT INTO Mesa_Persona VALUES (5,11111115,'P','F');
-INSERT INTO Mesa_Persona VALUES (6,11111116,'P','M');
-INSERT INTO Mesa_Persona VALUES (7,11111117,'P','M');
-INSERT INTO Mesa_Persona VALUES (8,11111118,'P','M');
+INSERT INTO Mesa_Persona VALUES (1,11111111,18,'P','F',0,'Sin Deuda');
+INSERT INTO Mesa_Persona VALUES (2,11111112,18,'P','F',0,'Sin Deuda');
+INSERT INTO Mesa_Persona VALUES (3,11111113,19,'P','F',0,'Sin Deuda');
+INSERT INTO Mesa_Persona VALUES (4,11111114,18,'P','F',0,'Sin Deuda');
+INSERT INTO Mesa_Persona VALUES (5,11111115,18,'A','F',500,'No Pagada');
+INSERT INTO Mesa_Persona VALUES (6,11111116,18,'P','M',0,'Sin Deuda');
+INSERT INTO Mesa_Persona VALUES (7,11111117,18,'P','M',0,'Sin Deuda');
+INSERT INTO Mesa_Persona VALUES (8,11111118,18,'A','M',250,'No Pagada');
