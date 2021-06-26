@@ -4,18 +4,6 @@ DROP DATABASE IF EXISTS `infractores`;
 CREATE DATABASE `infractores` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `infractores`;
 
--- Estructura de la tabla Personas:
-CREATE TABLE Personas (
-	P_Dni integer NOT NULL AUTO_INCREMENT,
-    P_Nombre varchar(50) NOT NULL,
-    P_Apellido varchar(50) NOT NULL,
-    P_Sexo ENUM('M','F',' ') NOT NULL,
-    P_CantDeudas integer NULL DEFAULT 0,
-    P_IdDistrito integer NOT NULL,
-    PRIMARY KEY (P_Dni,P_Sexo)
-
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
 --
 -- Estructura de la tabla Distritos:
 --
@@ -25,14 +13,29 @@ CREATE TABLE Distritos (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
+-- Estructura de la tabla Personas:
+--
+CREATE TABLE Personas (
+    P_Dni integer NOT NULL AUTO_INCREMENT,
+    P_Nombre varchar(50) NOT NULL,
+    P_Apellido varchar(50) NOT NULL,
+    P_Sexo ENUM('M','F',' ') NOT NULL,
+    P_CantDeudas integer NULL DEFAULT 0,
+    P_IdDistrito integer NOT NULL,
+    PRIMARY KEY (P_Dni,P_Sexo),
+    FOREIGN KEY (P_IdDistrito) REFERENCES Distritos(D_id)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+--
 -- Estructura de la tabla Mesa_Votacion:
 --
 CREATE TABLE Mesa_Votacion (
-	Mv_id integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	Mv_id integer NOT NULL AUTO_INCREMENT UNIQUE,
 	Mv_fecha date NOT NULL,
 	Mv_Tipo varchar(50) NOT NULL,
 	Mv_idDistrito integer NOT NULL,
-FOREIGN KEY (Mv_idDistrito) REFERENCES Distritos (D_id)
+        FOREIGN KEY (Mv_idDistrito) REFERENCES Distritos (D_id),
+        PRIMARY KEY (Mv_IdDistrito, Mv_id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
@@ -41,11 +44,11 @@ FOREIGN KEY (Mv_idDistrito) REFERENCES Distritos (D_id)
 CREATE TABLE Mesa_Persona (
 	Mp_Mv_id integer NOT NULL,
 	Mp_P_Dni integer NOT NULL,
-	Mp_Estado varchar(60) NOT NULL,
-PRIMARY KEY (Mp_Mv_id, Mp_P_Dni),	
-FOREIGN KEY (Mp_P_Dni) REFERENCES Personas (P_Dni),
-FOREIGN KEY (Mp_Mv_id) REFERENCES Mesa_Votacion (Mv_id)
-
+	Mp_Estado ENUM('A','P') NOT NULL,
+        Mp_P_Sexo ENUM('M','F',' ') NOT NULL,
+        FOREIGN KEY (Mp_P_Dni, Mp_P_Sexo) REFERENCES Personas (P_Dni,P_Sexo),
+        FOREIGN KEY (Mp_Mv_id) REFERENCES Mesa_Votacion (Mv_id),
+        PRIMARY KEY (Mp_Mv_id, Mp_P_Dni, Mp_P_Sexo)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
@@ -54,11 +57,11 @@ FOREIGN KEY (Mp_Mv_id) REFERENCES Mesa_Votacion (Mv_id)
 CREATE TABLE Multas_Persona (
 	MuP_Mv_id integer AUTO_INCREMENT NOT NULL,
 	MuP_P_Dni integer NOT NULL,
+        MuP_P_Sexo ENUM('M','F',' ') NOT NULL,
 	MuP_Monto integer NOT NULL,
-	MuP_Estado varchar(50) NULL DEFAULT NULL,
-	PRIMARY KEY (MuP_Mv_id,MuP_P_Dni),
-	FOREIGN KEY (MuP_P_Dni) REFERENCES Personas (P_Dni),
-	FOREIGN KEY (MuP_Mv_id) REFERENCES Mesa_Votacion(Mv_id)
+	FOREIGN KEY (MuP_P_Dni, MuP_P_Sexo) REFERENCES Personas (P_Dni, P_Sexo),
+	FOREIGN KEY (MuP_Mv_id) REFERENCES Mesa_Votacion(Mv_id), 
+	PRIMARY KEY (MuP_Mv_id,MuP_P_Dni, MuP_P_Sexo)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
@@ -118,11 +121,11 @@ INSERT INTO Mesa_Votacion VALUES (8,'2013-08-11','Generales 2013',18);
 --
 -- inserts into Mesa_Persona
 --
-INSERT INTO Mesa_Persona VALUES (1,11111111,'PRESENTE');
-INSERT INTO Mesa_Persona VALUES (2,11111112,'PRESENTE');
-INSERT INTO Mesa_Persona VALUES (3,11111113,'PRESENTE');
-INSERT INTO Mesa_Persona VALUES (4,11111114,'PRESENTE');
-INSERT INTO Mesa_Persona VALUES (5,11111115,'PRESENTE');
-INSERT INTO Mesa_Persona VALUES (6,11111116,'PRESENTE');
-INSERT INTO Mesa_Persona VALUES (7,11111117,'PRESENTE');
-INSERT INTO Mesa_Persona VALUES (8,11111118,'PRESENTE');
+INSERT INTO Mesa_Persona VALUES (1,11111111,'P','F');
+INSERT INTO Mesa_Persona VALUES (2,11111112,'P','F');
+INSERT INTO Mesa_Persona VALUES (3,11111113,'P','F');
+INSERT INTO Mesa_Persona VALUES (4,11111114,'P','F');
+INSERT INTO Mesa_Persona VALUES (5,11111115,'P','F');
+INSERT INTO Mesa_Persona VALUES (6,11111116,'P','M');
+INSERT INTO Mesa_Persona VALUES (7,11111117,'P','M');
+INSERT INTO Mesa_Persona VALUES (8,11111118,'P','M');
