@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es-es">
 <head>
@@ -58,6 +58,15 @@
 </head>
 
 <body _oncontextmenu="return false">
+ 
+<?php
+
+include("conexion.php");
+ 	$dni=$_GET['dni'];
+ 	
+
+?>
+
 
 	<div class="container-fluid">
 
@@ -92,7 +101,7 @@
 								Acceso público 							</span>
 						</div>
 						
-						<div class="card-body"> 
+				<div class="card-body"> 
 <!-- Cuerpo Aplicacion -->						
 
 
@@ -515,10 +524,10 @@
 					
 										<div class="card-footer cne-pie-bg"> 
 
-										<script>
-function redirigir() {
-  location.replace("inicio.php")
-}
+<script>
+	function redirigir() {
+	location.replace("inicio.php")
+	}
 </script>
 
 
