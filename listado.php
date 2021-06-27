@@ -497,7 +497,7 @@
 
 <div class="alert alert-warning shadow rounded" role="alert">
 			<div class="col-md-12 text-center">
-			  <i class="fas fa-exclamation-circle fa-3x" style="color:#FF9205;"></i>
+			  <img src="imagenes/Atencion_50.png" height=40px width=40px>
 			</div>
 			<b>
 	        ATENCION: Si desea conocer su situación respecto a actos electorales anteriores deberá comunicarse con la Secretaría Electoral Nacional del distrito donde reside, o en la Cämara Nacional Electoral.	        </b>
@@ -508,13 +508,20 @@
 <table align="center" width="100%">
 	<tbody><tr>
 		<td align="center">
-			<input type="button" value="Otra consulta" class="btn btn-primary" onclick="location.href=&#39;index.php&#39;">
+			<input type="button" value="Otra consulta" class="btn btn-primary" onclick="redirigir()">
 		</td>
 	</tr>
 </tbody></table>						</div>
 					
 										<div class="card-footer cne-pie-bg"> 
-										
+
+										<script>
+function redirigir() {
+  location.replace("inicio.php")
+}
+</script>
+
+
 		<!-- Pie Aplicacion -->
 		<div class="row">
 			(c) 2007-2018 - Poder Judicial de la Nación - Cámara Nacional Electoral							</div>
@@ -627,7 +634,10 @@
 				<input type="text" class="form-control" name="n_boleta" placeholder="Ingrese el numero de la boleta de pago"  required>
 				<div class="valid-feedback">Valido.</div>
 				<div class="invalid-feedback">Complete el campo.</div>
-			</div>	
+			</div>
+			<a href="https://infractores.padron.gob.ar/modelo.php" target="_blank"><img src="imagenes/Lupa_50.png" height=25px width=25px >Ver modelo de boleta!</a> 	
+			
+			<br><br>
 			<div class="form-group">
 				<label >Motivo del reclamo:</label>
 				<select  name="n_medio_pago" size="1">
