@@ -187,10 +187,10 @@
 			$dni = $_POST['Emat'];
 			$sexo = $_POST['Esex'];
 			$prov = $_POST['Epro'];
-			$retorno=False;
-			$retorno=buscar($dni,$sexo,$prov);
-			if($retorno==True){
-				echo "<script> location.replace('listado.php?dni=".$dni."'); </script>";
+			//$arr=array();
+			$arr=buscar($dni,$sexo,$prov);		
+			if($arr != null){			
+				echo"<script> location.replace('listado.php?dni=".$dni."& nombre=".$arr[1]."& apellido=".$arr[2]."& sexo=".$sexo."& provincia=".$prov."'); </script>";
 				exit();
 			}
 		}

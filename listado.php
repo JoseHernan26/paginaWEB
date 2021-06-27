@@ -63,7 +63,11 @@
 
 include("conexion.php");
  	$dni=$_GET['dni'];
- 	
+	$nombre=$_GET['nombre'];
+	$apellido=$_GET['apellido'];
+	$sexo=$_GET['sexo'];
+	$provincia=$_GET['provincia'];
+    listar($dni,$sexo,$provincia);
 
 ?>
 
@@ -130,107 +134,124 @@ include("conexion.php");
 <div class="alert alert-primary text-center shadow" role="alert">
 	<div class="row align-items-center">
 			<div class="col-md-4 text-center align-middle">
-					Matrícula Nº 	<h2>
-			  		40.823.458		</h2>
+					Matrícula Nº 	
+					<h2> <?php echo$dni;   ?></h2>
 			</div>
 			<div class="col-md-8 text-center align-middle">
-			  		Apellido y nombres 			  		<h2>
-					  ROSAS AMAYA, FRANCISCO GABRIEL	</h2>
+			  		Apellido y nombres 			  		
+					<h2> <?php echo" ".$apellido." , ".$nombre;   ?></h2>
 			</div>
 	</div>
 </div>
 
-	<div class="alert alert-secondary shadow rounded" role="alert">
 	
+<!--	 LISTADO DE SUFRAGIOS  --->	
+<!-- ESTA ARREGLADO --->	
+	
+<div class="alert alert-secondary shadow rounded" role="alert">
 	<div class="row align-items-center">
 		<div class="col-md-2 text-center align-middle">
 		
-<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0">
-
-
-	<tbody><tr>
-		<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-			<span class="small text-white font-weight-bold">
-				OCTUBRE			</span>
-			<br>
-			<span class="text-black font-weight-bold">
-				2019			</span>
-		</td>
-	</tr>
-	<tr>
-		<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-			<span style="font-size:24px;font-weight:bolder">27<span>
-		</span></span></td>
-	</tr>
-</tbody></table>
-
-
-
-
-		<span class="small text-body">
-			GENERALES 2019		</span>    	
-		<br>  
-		<span class="text-primary">
-		<b>  	
-		SAN LUIS		</b>
-		</span>    	
+			<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0">
+				<tbody>
+					<tr>
+						<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
+							<span class="small text-white font-weight-bold">
+									OCTUBRE			
+							</span>
+							<br>
+							<span class="text-black font-weight-bold">
+									2019			
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
+							<span style="font-size:24px;font-weight:bolder">
+								27
+							<span>
+							</span></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<span class="small text-body">
+				  GENERALES 2019		
+			</span>    	
+			<br>  
+			<span class="text-primary">
+				<b>  	
+					SAN LUIS
+				</b>
+			</span>    	
 		</div>
 		<div class="col-md-6 text-center align-middle">
-												<i class="fas fa-check-circle fa-3x" style="color:#008000;"></i><h2> UD. NO ES INFRACTOR </h2>								
+				<i class="fas fa-check-circle fa-3x" style="color:#008000;"></i>
+				<h2> UD. NO ES INFRACTOR </h2>								
 		</div>
 		<div class="col-md-4 text-right" style="vertical-align:middle;">
 			<span>
-
-			<a class="btn btn-sm btn-outline-success btn-block" data-caption="Imprimir constancia" data-fancybox="" data-type="iframe" data-src="constancia_noinfractor.php?x_cue=GD00126449204" href="javascript:;">
-				Imprimir constancia
-			</a>
-
-					</span>
+				<a class="btn btn-sm btn-outline-success btn-block" data-caption="Imprimir constancia" data-fancybox="" data-type="iframe" data-src="constancia_noinfractor.php?x_cue=GD00126449204" href="javascript:;">
+					Imprimir constancia
+				</a>
+			</span>
 		</div>
 	</div>
-	</div>
+</div>
 
 
-	<div class="alert alert-secondary shadow rounded" role="alert">
+
+
+<!--- YA ESTA ARREGLADO  --->
+
+
+<div class="alert alert-secondary shadow rounded" role="alert">
 	
 	<div class="row align-items-center">
 		<div class="col-md-2 text-center align-middle">
 		
-<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0">
+			<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0">
 
-	<tbody><tr>
-		<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-			<span class="small text-white font-weight-bold">
-				AGOSTO			</span>
-			<br>
-			<span class="text-black font-weight-bold">
-				2019			</span>
-		</td>
-	</tr>
-	<tr>
-		<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-			<span style="font-size:24px;font-weight:bolder">11<span>
-		</span></span></td>
-	</tr>
-</tbody></table>
-
-
-		<span class="small text-body">
-			PRIMARIAS 2019		</span>    	
-		<br>  
-		<span class="text-primary">
-		<b>  	
-			SAN LUIS		</b>
-		</span>    	
+				<tbody>
+					<tr>
+						<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
+								<span class="small text-white font-weight-bold">
+									AGOSTO			
+								</span>
+								<br>
+								<span class="text-black font-weight-bold">
+								2019			
+								</span>
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
+								<span style="font-size:24px;font-weight:bolder">11
+									<span>
+									</span>
+								</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<span class="small text-body">
+				PRIMARIAS 2019		
+			</span>    	
+			<br>  
+			<span class="text-primary">
+				<b>  	
+					SAN LUIS		
+				</b>
+			</span>    	
 		</div>
 		<div class="col-md-6 text-center align-middle">
 								
-								<i class="fas fa-exclamation-circle fa-3x" style="color:red;"></i>
-								<h2>
-									EL ELECTOR NO HA VOTADO EN LA ELECCIÓN INDICADA								</h2>
-								<small>
-									Según los datos obrantes en la Justicia Nacional Electoral, Ud. no ha emitido su voto en la eleccion indicada. Para regularizar su situación, puede abonar la multa prevista por el Código Electoral Nacional (art.125).								</small>
-											
+			<i class="fas fa-exclamation-circle fa-3x" style="color:red;"></i>
+			<h2> EL ELECTOR NO HA VOTADO EN LA ELECCIÓN INDICADA</h2>
+			<small>
+				Según los datos obrantes en la Justicia Nacional Electoral, Ud. no ha emitido su voto en la eleccion indicada. Para regularizar su situación, puede abonar la multa prevista por el Código Electoral Nacional (art.125).								
+			</small>
+						
 		</div>
 		<div class="col-md-4 text-right" style="vertical-align:middle;">
 			<span>
@@ -251,7 +272,18 @@ include("conexion.php");
 			</span>
 		</div>
 	</div>
-	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 	<div class="alert alert-secondary shadow rounded" role="alert">
