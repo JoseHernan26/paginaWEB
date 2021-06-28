@@ -1,4 +1,5 @@
 <?php
+
 function conectar(){
    $srvr = "localhost";
    $user = "root";
@@ -10,13 +11,13 @@ function conectar(){
 }
 function buscar($dni, $sexo, $prov){
    $con = conectar();
-   $resul = mysqli_query($con,"SELECT 1 FROM Personas WHERE P_Dni=$dni AND P_Sexo='$sexo' AND P_IdDistrito=$prov");
+   $resul = mysqli_query($con,"SELECT * FROM Personas WHERE P_Dni=$dni AND P_Sexo='$sexo' AND P_IdDistrito=$prov");
    if(mysqli_num_rows($resul)){
-//      echo '<script>alert("SE ENCUENTRA REGISTRADO!")</script>';
-      //Llamar a la pagina correspondiente y la funcion listar()
-      listar($dni,$sexo,$prov);
-   }
-   else{
+
+	  $row = $resul->fetch_array(MYSQLI_NUM);
+	  $arr = array($row[0],$row[1],$row[2]);
+	  return $arr;
+   }else{
       switch($prov){
 	 case "01": $distrito="CAPITAL FEDERAL"; break;
 	 case "02": $distrito="BUENOS AIRES"; break;
@@ -44,16 +45,21 @@ function buscar($dni, $sexo, $prov){
 	 case "24": $distrito="TIERRA DEL FUEGO"; break;
 	 case "30": $distrito="ARGENTINOS EN EL EXTERIOR"; break;
       }
+	  
       echo '<div class="alert alert-danger text-center shadow" role="alert"><div class="col-md-12 text-center"><i class="fas fa-times-circle fa-3x" style="color:red;"></i></div><h3>La matrícula ['.$dni.' '.$sexo.' ] no se ha localizado<br>en el padrón del distrito [ '.$distrito.' ]</h3><br>Si considera que esta situación es debido a un error u omisión en el <br>Registro Nacional de Electores, consulta a la Secretaria Electoral del distrito ó a la Cámara Nacional Electoral<br>Muchas gracias</div>';
       mysqli_close($con);
+	  
    }
 }
 
 function listar($dni,$sexo,$prov){
-   $con = conectar();
-   $resul = mysqli_query($con,"SELECT * FROM Mesa_Persona MP, Mesa_Votacion MV WHERE Mp_P_Dni=$dni AND Mp_P_Sexo='$sexo' AND Mp_D_id=$prov AND MV.Mv_id = MP.Mp_Mv_id");
-   while($consulta = mysqli_fetch_array($resul)){
-      echo $consulta['Mp_Deuda'];
-   }
+    $con = conectar();
+    $resul = mysqli_query($con,"SELECT * FROM Mesa_Persona MP, Mesa_Votacion MV WHERE Mp_P_Dni=$dni AND Mp_P_Sexo='$sexo' AND Mp_D_id=$prov AND MV.Mv_id = MP.Mp_Mv_id ORDER BY Mv_fecha DESC");
+    $arr =array();
+    while($consulta=mysqli_fetch_array($resul)){
+      array_push($arr, array($consulta['Mv_fecha'],$consulta['Mv_tipo'],$consulta['Mp_deuda'])); 
+    }
+    return $arr;
 }
+
 ?>

@@ -1,7 +1,3 @@
-<?php
-   ini_set('display_errors', 1);
-   include("conexion.php");    
-?>
 <!DOCTYPE html>
 <html  xml:lang="es" lang="es-es">
 <head>
@@ -38,6 +34,8 @@
 
 <body>
 
+
+
 	<div class="container-fluid">
       <div class="row justify-content-center">
 	 <div class="col-md-8">
@@ -70,7 +68,7 @@
 				</div>
 				
 				<div class="card-body">
-					<form id="ingWeb" name="dgt" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+					<form id="ingWeb" name="dgt" method="post" action="inicio.php" action="listado.php"  >
 						<!--  sacamos onsubmit="return validar_form(this);" al lado de actiion  -->
 							<div class="row">
 							
@@ -167,6 +165,8 @@
   });
   </script>
  <?php
+	include("conexion.php");
+	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		define("RECAPTCHA_V3_SECRET_KEY", '6Lc6EEgbAAAAABCiOdMLbrC81IIsoCGcr6poEg6s');
@@ -187,7 +187,12 @@
 			$dni = $_POST['Emat'];
 			$sexo = $_POST['Esex'];
 			$prov = $_POST['Epro'];
-			buscar($dni,$sexo,$prov);
+			//$arr=array();
+			$arr=buscar($dni,$sexo,$prov);		
+			if($arr != null){			
+				echo"<script> location.replace('listado.php?dni=".$dni."& nombre=".$arr[1]."& apellido=".$arr[2]."& sexo=".$sexo."& provincia=".$prov."'); </script>";
+				exit();
+			}
 		}
 		else {			
 			echo "Lo siento, parece que eres un Robot";
@@ -196,6 +201,9 @@
 	}
 
 ?>
+
+
+
 					<script type="text/javascript" language="JavaScript1.1">
 						document.getElementById('captcha').src = 'captcha/securimage_show.php?' + Math.random(); 
 					</script>
