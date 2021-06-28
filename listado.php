@@ -60,26 +60,12 @@
 <body _oncontextmenu="return false">
  
 <?php
-/*
- VAS A TENER QUE DESCOMENTAR PARA QUE TE ANDE LA NAVEGACION DESDE EL INICIO HASTA LISTADO
-
-include("conexion.php");
+        include("conexion.php");
  	$dni=$_GET['dni'];
 	$nombre=$_GET['nombre'];
 	$apellido=$_GET['apellido'];
 	$sexo=$_GET['sexo'];
 	$provincia=$_GET['provincia'];
-
-
-	
-	LLAMA A LISTAR!
-    listar($dni,$sexo,$provincia);
-*/
-
-
-$nombre="vv";
-$apellido="bb";
-$dni=14;
 ?>
 
 
@@ -253,17 +239,8 @@ function f_infractor($posicion){
 
 
 
-$arr = array (    /// fecha // tipo // districto //  deuda
-			array(2019-10-27,"tipo general","2","No Pagada"),
-			array(2019-8-2,"tipo general","2","No Pagada"),
-			array(2013-10-27,"tipo general","2","Sin Deuda"),
-			array(2014-10-1,"tipo general","2","Sin Deuda"),
-  		);
-
-listar_mesas($nombre ,$apellido , $dni , $arr );
 
 
-// $fecha = explode(":", $datos);
 function  listar_mesas($nombre ,$apellido , $dni , $arr ){
 	$cant= count($arr);
 	$posiciones=array(False,False,False,False,False,False,False,False,False); //9 posiciones
@@ -711,7 +688,9 @@ function  listar_mesas($nombre ,$apellido , $dni , $arr ){
 
 
 }
-	
+
+
+listar_mesas($nombre,$apellido,$dni,listar($dni,$sexo,$provincia));
 ?>
 
 

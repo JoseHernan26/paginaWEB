@@ -54,15 +54,12 @@ function buscar($dni, $sexo, $prov){
 
 function listar($dni,$sexo,$prov){
     $con = conectar();
-    $resul = mysqli_query($con,"SELECT * FROM Mesa_Persona MP, Mesa_Votacion MV 
-   										WHERE Mp_P_Dni=$dni AND Mp_P_Sexo='$sexo' AND Mp_D_id=$prov AND MV.Mv_id = MP.Mp_Mv_id");
-	$arr =array();
-	while($consulta=mysqli_fetch_array($resul)){
-		echo $consulta['Mp_Deuda'];
-
-	}
-	return $resul;
-	
+    $resul = mysqli_query($con,"SELECT * FROM Mesa_Persona MP, Mesa_Votacion MV WHERE Mp_P_Dni=$dni AND Mp_P_Sexo='$sexo' AND Mp_D_id=$prov AND MV.Mv_id = MP.Mp_Mv_id ORDER BY Mv_fecha DESC");
+    $arr =array();
+    while($consulta=mysqli_fetch_array($resul)){
+      array_push($arr, array($consulta['Mv_fecha'],$consulta['Mv_tipo'],$consulta['Mp_deuda'])); 
+    }
+    return $arr;
 }
 
 ?>
