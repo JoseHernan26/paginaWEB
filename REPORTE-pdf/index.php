@@ -1,6 +1,7 @@
 <?php
 require('fpdf/fpdf.php');
-
+//date_default_timezone_set('UTC-3');
+date_default_timezone_set('America/Buenos_Aires');
 
 $var_nom = 'Francisco Rosas Amaya';
 $var_dni= 213123123;
@@ -8,6 +9,7 @@ $var_dni= 213123123;
 $var_day=date("d");
 $var_month=date("m");
 $var_year=date("Y");
+$var_hour = date("H:i");
 //$pdf = new FPDF();
 //$pdf->AddPage();
 //$pdf->SetFont('Arial','B',16);
@@ -19,8 +21,8 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('logo_cne.jpg',170,18,30);
-    $this->Image('justicia_nacional.jpg',10,18,65);
+    $this->Image('logo_cne.jpg',170,15,30);
+    $this->Image('justicia_nacional.jpg',10,15,65);
     $this->Image('subtitulo.jpg',10,40,190);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
@@ -67,7 +69,29 @@ $pdf->Cell(0,150,utf8_decode('Se emite el presente certificado por disposición 
 
 $pdf->Cell(-190);
 $pdf->Cell(0,160,utf8_decode($var_day.' dias del mes de '.$var_month.' de '.$var_year));
-$pdf->Image('bar-code.jpg',20,150,70);
+$pdf->Image('bar-code.jpg',20,135,70);
+
+//(c) 2007-2018 - Poder Judicial de la Nación - Cámara Nacional Electoral
+
+//$pdf->SetFont('Arial','B',22);
+//quizas asi hace salto de linea
+//$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+//
+//$pdf->Cell(-15,150,'Page ',1,0,'R');
+/* --- Cell --- */
+$pdf->SetDrawColor(67,134,255);
+$pdf->SetXY(10, 10);
+$pdf->Cell(190, 182, '', 1, 1, 'L', false);
+$pdf->SetDrawColor(0);
+/* --- Cell --- */
+$pdf->SetXY(10, 170);
+$pdf->SetFont('Arial', '', 8);
+$pdf->Cell(190, 5, utf8_decode('(c) 2007-2018 - Poder Judicial de la Nación - Cámara Nacional Electoral'), 1, 1, 'C', false);
+
+$pdf->SetXY(10, 175);
+$pdf->SetFont('Arial', '', 8);
+$pdf->Cell(190, 5, utf8_decode('Constancia generada el: '.$var_day.'/'.$var_month.'/'.$var_year.' - '.$var_hour), 0, 1, 'L', false);
+
 /*
 for($i=1;$i<=40;$i++)
     $pdf->Cell(0,10,'Printing line number '.$i,0,1);
