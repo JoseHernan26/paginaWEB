@@ -56,10 +56,12 @@ function listar($dni,$sexo,$prov){
     $con = conectar();
     $resul = mysqli_query($con,"SELECT * FROM Mesa_Persona MP, Mesa_Votacion MV 
    										WHERE Mp_P_Dni=$dni AND Mp_P_Sexo='$sexo' AND Mp_D_id=$prov AND MV.Mv_id = MP.Mp_Mv_id");
- 
-	//$row = $resul->fetch_array(MYSQLI_NUM);
-	//$arr = array($row[0],$row[1],$row[2]);
-	//return $arr;
+	$arr =array();
+	while($consulta=mysqli_fetch_array($resul)){
+		echo $consulta['Mp_Deuda'];
+
+	}
+	return $resul;
 	
 }
 
