@@ -280,9 +280,12 @@ listar_mesas($nombre,$apellido,$dni,listar($dni,$sexo,$provincia));
 
 
 <!-------- FIN    XXXXXXXXXXXX    --------->
-<script>
-	function generarPDF(nombre,apellido,dni) {
-	location.replace("REPORTE-pdf/index.php?nombre="+nombre+"& apellido="+apellido+"& dni="+dni+");
+<script type="text/javascript">
+function generarPDF() {
+        var nombre = "<?php Print($nombre);?>";
+        var apellido =  "<?php Print($apellido);?>";
+        var dni =  "<?php Print($dni);?>";
+        location.replace("REPORTE-pdf/index.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"");
 	}
 </script>
 

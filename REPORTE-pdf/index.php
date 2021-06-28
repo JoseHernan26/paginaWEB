@@ -3,7 +3,7 @@ require('fpdf/fpdf.php');
 //date_default_timezone_set('UTC-3');
 date_default_timezone_set('America/Buenos_Aires');
 
-$var_nom = $_GET['nombre'].=$_GET['apellido'];
+$var_nom = $_GET['nombre']." ".$_GET['apellido'];
 $var_dni= $_GET['dni'];
 
 $var_day=date("d");
