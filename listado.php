@@ -237,453 +237,60 @@ function f_infractor($posicion){
 
 
 
-
-
-
-
 function  listar_mesas($nombre ,$apellido , $dni , $arr ){
 	$cant= count($arr);
 	$posiciones=array(False,False,False,False,False,False,False,False,False); //9 posiciones
 	for( $i=0 ;$i<$cant;$i++){
 		$posiciones[$i]=True;
 	}
-	//$fecha=explode("-",$arr[0][0])
-    
-	//  0
-	if($posiciones[0]==True){
-		$fecha=explode("-",$arr[0][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
+	for( $i=0 ;$i<$cant;$i++){ 
+		if($posiciones[$i]==True){
+			$fecha=explode("-",$arr[$i][0]);
+			echo' 
+				<div class="alert alert-secondary shadow rounded" role="alert">
+					<div class="row align-items-center">
+						<div class="col-md-2 text-center align-middle">
+							<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
+								<tbody>
+									<tr>
+										<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
+												<span class="small text-white font-weight-bold">
+												'.$fecha[1].'			
 												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[0][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[0][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[0][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-	//  1
-	if($posiciones[1]==True){
-		$fecha1=explode("-",$arr[1][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha1[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha1[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
+												<br>
+												<span class="text-black font-weight-bold">
+												'.$fecha[0].'			
 												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[1][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[1][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[1][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-	//2
-	if($posiciones[2]==True){
-		$fecha2=explode("-",$arr[2][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha2[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha2[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
+										</td>
+									</tr>
+									<tr>
+										<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
+												<span style="font-size:24px;font-weight:bolder">
+												'.$fecha[2].'
+													<span>
+													</span>
 												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[2][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[2][2]).'		
-							</b>
-						</span>    	
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<span class="small text-body">
+								'.$arr[$i][1].'		
+							</span>    	
+							<br>  
+							<span class="text-primary">
+								<b>  	
+									'.f_provincia($arr[$i][2]).'		
+								</b>
+							</span>    	
+						</div>
+						'.f_infractor($arr[$i][3]).'
+							
+	
 					</div>
-					'.f_infractor($arr[2][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-
-	// 3
-	if($posiciones[3]==True){
-		$fecha3=explode("-",$arr[3][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha3[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha3[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
-												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[3][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[3][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[3][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-
-	//  4
-	if($posiciones[4]==True){
-		$fecha4=explode("-",$arr[4][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha4[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha4[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
-												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[4][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[4][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[4][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-
-	// 5
-	if($posiciones[5]==True){
-		$fecha5=explode("-",$arr[5][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha5[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha5[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
-												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[5][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[5][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[5][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-
-	//   6 
-	if($posiciones[6]==True){
-		$fecha6=explode("-",$arr[6][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha6[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha6[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
-												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[6][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[6][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[6][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-	// 7
-	if($posiciones[7]==True){
-		$fecha7=explode("-",$arr[7][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha7[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha7[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
-												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[7][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[7][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[7][3]).'
-						
-
-				</div>
-			</div>';
-			
-	}
-
-
-	// 8
-	if($posiciones[8]==True){
-		$fecha8=explode("-",$arr[8][0]);
-		echo' 
-			<div class="alert alert-secondary shadow rounded" role="alert">
-				<div class="row align-items-center">
-					<div class="col-md-2 text-center align-middle">
-						<table width="90" align="center" style="" class="_shadow _rounded" cellpadding="1" cellspacing="0"
-							<tbody>
-								<tr>
-									<td style="background-color:darkgray;border-top-left-radius: .50rem;border-top-right-radius: .50rem;" align="center">
-											<span class="small text-white font-weight-bold">
-											'.$fecha8[1].'			
-											</span>
-											<br>
-											<span class="text-black font-weight-bold">
-											'.$fecha8[0].'			
-											</span>
-									</td>
-								</tr>
-								<tr>
-									<td style="background-color: white;border-bottom-left-radius: .50rem;border-bottom-right-radius: .50rem;" align="center">
-											<span style="font-size:24px;font-weight:bolder">11
-												<span>
-												</span>
-											</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<span class="small text-body">
-							'.$arr[8][1].'		
-						</span>    	
-						<br>  
-						<span class="text-primary">
-							<b>  	
-								'.f_provincia($arr[8][2]).'		
-							</b>
-						</span>    	
-					</div>
-					'.f_infractor($arr[8][3]).'
-						
-
-				</div>
-			</div>';
-			
+				</div>';
+				
+		}
 	}
 
 
