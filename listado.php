@@ -62,12 +62,20 @@
 <body _oncontextmenu="return false">
  
 <?php
-        include("conexion.php");
+    include("conexion.php");
+
+	if ($_SERVER["REQUEST_METHOD"] == "GET" ){
  	$dni=$_GET['dni'];
 	$nombre=$_GET['nombre'];
 	$apellido=$_GET['apellido'];
 	$sexo=$_GET['sexo'];
 	$provincia=$_GET['provincia'];
+
+	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	echo"-------------------------: ".$actual_link;
+	}
+
+
 ?>
 
 
@@ -357,8 +365,15 @@ function generarPDF(anio,tipo) {
 	
 			$nombre="";
 			$nombre = test_input($_POST["efectuar_reclamo"]);
-			if($nombre="case_reclamo"){
+			echo"-------------------------: ".$actual_link;
+			//$url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+			//$url=http_build_url();
+			//echo $url;	
+			
+			if($nombre =="case_reclamo"){
+				
 				$email=$telefono=$adjunto=$texto=$motivo="";
+
 				$email=test_input($_POST["n_email"]);
 				$telefono=test_input($_POST["n_telefono"]);
 				$adjunto=test_input($_POST["n_adjunto"]);
@@ -375,6 +390,7 @@ function generarPDF(anio,tipo) {
 					echo 'Se ha producido un error. Intente comunicarse por otro medio con VIA ELECTRONICA';
 				}
 			}else{
+			
 				$email=$telefono=$anio=$mes=$dia=$medio_pago=$boleta="";
 				$email=test_input($_POST["n_email"]);
 				$telefono=test_input($_POST["n_telefono"]);
@@ -394,6 +410,11 @@ function generarPDF(anio,tipo) {
 					echo 'Se ha producido un error. Intente comunicarse por otro medio con VIA ELECTRONICA';
 				}
 			}
+
+			//echo"<script> location.replace('listado.php?dni= ".$dni."& nombre=".$nombre."& apellido=".$apellido."& sexo=".$sexo."& provincia=".$provincia."'); </script>";
+			//header('Location:'.$url);
+			echo"<script> location.replace('".$actual_link."'); </script>";
+			
 		}
 			
 	?>	
@@ -528,7 +549,7 @@ function generarPDF(anio,tipo) {
 
 				<!-- Modal footer -->
 			<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" name="efectuar_reclamo" value="case_reclamo" >Proceder</button>
+					<button type="submit" class="btn btn-primary" name="efectuar_reclamo" value="efectuar_reclamo" >Proceder</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 			</div>	
 
