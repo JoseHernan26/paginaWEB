@@ -126,7 +126,6 @@
 	<br>
 </div>
 
-	
 
 <div class="alert alert-primary text-center shadow" role="alert">
 	<div class="row align-items-center">
@@ -140,13 +139,6 @@
 			</div>
 	</div>
 </div>
-
-	
-<!--	 LISTADO DE SUFRAGIOS  --->	
-
-
-
-<!-------- XXXXXXXXXXXX    --------->
 
 <?php
 
@@ -182,9 +174,8 @@ function f_provincia($prov){
 	return $distrito;
 }
 
-
 function f_infractor($posicion){
-	if($posicion=="Sin Deuda"){
+   if($posicion=="Sin Deuda"){
 		$rta='		
 		<div class="col-md-6 text-center align-middle">
 			<i class="fas fa-check-circle fa-3x" style="color:#008000;"></i>
@@ -198,7 +189,8 @@ function f_infractor($posicion){
 			</span>
 		</div>';
 	
-	}else{
+	}
+	else{
 		$rta='
 		<div class="col-md-6 text-center align-middle">
 								
@@ -233,19 +225,10 @@ function f_infractor($posicion){
 
 }
 
-
-
-
-
-function  listar_mesas($nombre ,$apellido , $dni , $arr ){
+function  listar_mesas($nombre ,$apellido, $dni, $arr){
 	$cant= count($arr);
-	$posiciones=array(False,False,False,False,False,False,False,False,False); //9 posiciones
-	for( $i=0 ;$i<$cant;$i++){
-		$posiciones[$i]=True;
-	}
 	for( $i=0 ;$i<$cant;$i++){ 
-		if($posiciones[$i]==True){
-			$fecha=explode("-",$arr[$i][0]);
+	   $fecha=explode("-",$arr[$i][0]);
 			echo' 
 				<div class="alert alert-secondary shadow rounded" role="alert">
 					<div class="row align-items-center">
@@ -290,20 +273,15 @@ function  listar_mesas($nombre ,$apellido , $dni , $arr ){
 					</div>
 				</div>';
 				
-		}
+		
 	}
-
-
 }
-
 
 listar_mesas($nombre,$apellido,$dni,listar($dni,$sexo,$provincia));
 ?>
 
 
-
 <!-------- FIN    XXXXXXXXXXXX    --------->
-
 
 
 <div class="alert alert-warning shadow rounded" role="alert">
