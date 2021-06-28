@@ -183,9 +183,7 @@ function f_infractor($posicion){
 		</div>
 		<div class="col-md-4 text-right" style="vertical-align:middle;">
 			<span>
-				<a class="btn btn-sm btn-outline-success btn-block" data-caption="Imprimir constancia" data-fancybox="" data-type="iframe" data-src="constancia_noinfractor.php?x_cue=GD00126449204" href="javascript:;">
-					Imprimir constancia
-				</a>
+				<button type="button" class="btn btn-outline-success"  onclick="generarPDF()">Imprimir constancia</button>
 			</span>
 		</div>';
 	
@@ -282,7 +280,11 @@ listar_mesas($nombre,$apellido,$dni,listar($dni,$sexo,$provincia));
 
 
 <!-------- FIN    XXXXXXXXXXXX    --------->
-
+<script>
+	function generarPDF(nombre,apellido,dni) {
+	location.replace("REPORTE-pdf/index.php?nombre="+nombre+"& apellido="+apellido+"& dni="+dni+");
+	}
+</script>
 
 <div class="alert alert-warning shadow rounded" role="alert">
 			<div class="col-md-12 text-center">
