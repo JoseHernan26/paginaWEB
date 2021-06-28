@@ -57,7 +57,7 @@ function listar($dni,$sexo,$prov){
     $resul = mysqli_query($con,"SELECT * FROM Mesa_Persona MP, Mesa_Votacion MV WHERE Mp_P_Dni=$dni AND Mp_P_Sexo='$sexo' AND Mp_D_id=$prov AND MV.Mv_id = MP.Mp_Mv_id ORDER BY Mv_fecha DESC");
     $arr =array();
     while($consulta=mysqli_fetch_array($resul)){
-      array_push($arr, array($consulta['Mv_fecha'],$consulta['Mv_tipo'],$consulta['Mp_D_id'],$consulta['Mp_DeudaEstado'])); 
+      array_push($arr, array($consulta['Mv_fecha'],$consulta['Mv_Tipo'],$consulta['Mp_D_id'],$consulta['Mp_DeudaEstado'])); 
     }
     return $arr;
 }
