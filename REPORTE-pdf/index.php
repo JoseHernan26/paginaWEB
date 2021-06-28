@@ -5,6 +5,9 @@ date_default_timezone_set('America/Buenos_Aires');
 
 $var_nom = $_GET['nombre']." ".$_GET['apellido'];
 $var_dni= $_GET['dni'];
+$var_yearMesa = $_GET['anio'];
+$var_tipo = $_GET['tipo'];
+
 
 $var_day=date("d");
 $var_month=date("m");
@@ -58,7 +61,7 @@ $pdf->Cell(40,80,utf8_decode('SE CERTIFICA QUE el/la elector/a '.$var_nom));
 $pdf->Cell(-40);
 $pdf->Cell(0,90,utf8_decode('Doc. de Identidad N° '.$var_dni.' no se encuentra incluído en el Registro de Infractores'));
 $pdf->Cell(-190);
-$pdf->Cell(0,100,utf8_decode('al deber de votar en las elecciones GENERALES 2019'));
+$pdf->Cell(0,100,utf8_decode('al deber de votar en las elecciones '.$var_tipo.' '.$var_yearMesa));
 $pdf->Cell(-180);
 $pdf->Cell(0,130,utf8_decode('La presente constancia no acredita causa justificada respecto de la no concurrencia ó '));
 //abandono de funciones electorales (cf. art. 132 CEN).

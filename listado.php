@@ -176,7 +176,7 @@ function f_provincia($prov){
 	return $distrito;
 }
 
-function f_infractor($posicion){
+function f_infractor($posicion,$anio,$tipo){
    if($posicion=="Sin Deuda"){
 		$rta='		
 		<div class="col-md-6 text-center align-middle">
@@ -185,7 +185,7 @@ function f_infractor($posicion){
 		</div>
 		<div class="col-md-4 text-right" style="vertical-align:middle;">
 			<span>
-				<button type="button" class="btn btn-outline-success"  onclick="generarPDF()">Imprimir constancia</button>
+				<button type="button" class="btn btn-outline-success"  onclick="generarPDF(&quot;'.$anio.'&quot;,&quot;'.$tipo.'&quot;)">Imprimir constancia</button>
 			</span>
 		</div>';
 	
@@ -267,7 +267,7 @@ function  listar_mesas($nombre ,$apellido, $dni, $arr){
 								</b>
 							</span>    	
 						</div>
-						'.f_infractor($arr[$i][3]).'
+						'.f_infractor($arr[$i][3],$fecha[0],$arr[$i][1]).'
 							
 	
 					</div>
@@ -283,11 +283,11 @@ listar_mesas($nombre,$apellido,$dni,listar($dni,$sexo,$provincia));
 
 <!-------- FIN    XXXXXXXXXXXX    --------->
 <script type="text/javascript">
-function generarPDF() {
+function generarPDF(anio,tipo) {
         var nombre = "<?php Print($nombre);?>";
         var apellido =  "<?php Print($apellido);?>";
-        var dni =  "<?php Print($dni);?>";
-        location.replace("REPORTE-pdf/index.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"");
+	var dni =  "<?php Print($dni);?>";
+	window.open("REPORTE-pdf/index.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
 	}
 </script>
 
