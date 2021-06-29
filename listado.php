@@ -48,13 +48,13 @@
 
 
 
-<script async="" type="text/javascript" src="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/jquery-3.3.1.slim.min.js.descarga"></script>
-<script async="" type="text/javascript" src="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/popper.min.js.descarga"></script>
-<script async="" type="text/javascript" src="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/bootstrap.min.js.descarga"></script>
+<script async="" type="text/javascript" src="./css/jquery-3.3.1.slim.min.js.descarga"></script>
+<script async="" type="text/javascript" src="./css/popper.min.js.descarga"></script>
+<script async="" type="text/javascript" src="./css/bootstrap.min.js.descarga"></script>
 
-<link rel="stylesheet" href="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/cne_css.css">
+<link rel="stylesheet" href="./css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./css/cne_css.css">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/jquery.fancybox.css">
+<link rel="stylesheet" type="text/css" href="./css/jquery.fancybox.css">
 
 
 	
