@@ -43,6 +43,11 @@
 
 
 
+
+
+
+
+
 <script async="" type="text/javascript" src="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/jquery-3.3.1.slim.min.js.descarga"></script>
 <script async="" type="text/javascript" src="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/popper.min.js.descarga"></script>
 <script async="" type="text/javascript" src="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/bootstrap.min.js.descarga"></script>
@@ -51,11 +56,7 @@
 <link rel="stylesheet" type="text/css" href="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="./Justicia Nacional Electoral - REGISTRO DE INFRACTORES_files/cne_css.css">
 
-<script type="text/javascript">
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip()
-	})
-</script>
+
 
 </head>
 
@@ -72,8 +73,9 @@
 	$provincia=$_GET['provincia'];
 
 	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	echo"-------------------------: ".$actual_link;
+	
 	}
+
 
 
 ?>
@@ -314,7 +316,7 @@ function generarPDF(anio,tipo) {
 	<tbody>
 		<tr>
 			<td align="center">
-				<input type="button" value="Otra consulta" class="btn btn-primary" onclick="redirigir()">
+				<input type="button" value="Otra consulta" class="btn btn-primary" onclick="location.replace('inicio.php')">
 			</td>
 		</tr>
 	</tbody>
@@ -323,11 +325,7 @@ function generarPDF(anio,tipo) {
 					
 <div class="card-footer cne-pie-bg"> 
 
-<script>
-	function redirigir() {
-	location.replace("inicio.php")
-	}
-</script>
+
 
 
 		<!-- Pie Aplicacion -->
@@ -364,11 +362,7 @@ function generarPDF(anio,tipo) {
 		if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
 	
 			$nombre="";
-			$nombre = test_input($_POST["efectuar_reclamo"]);
-			echo"-------------------------: ".$actual_link;
-			//$url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-			//$url=http_build_url();
-			//echo $url;	
+			$nombre = test_input($_POST["efectuar_reclamo"]);	
 			
 			if($nombre =="case_reclamo"){
 				
@@ -384,6 +378,7 @@ function generarPDF(anio,tipo) {
 				try{
 					//Envio el email
 					mail("valen.bagli@gmail.com","EFECTUAR RECLAMO SOBRE LA SITUACION",$contenido);
+					
 					echo "<script>alert('Sus datos fueron enviados correctamente! Pronto nos estaremos comunicando con ustedes');</script>";
 					
 				} catch (Exception $e) {
@@ -404,20 +399,21 @@ function generarPDF(anio,tipo) {
 				try{
 					//Envio el email
 					mail("valen.bagli@gmail.com","RECLAMO POR MULTA ABONADA",$contenido);
+					
 					echo "<script>alert('Sus datos fueron enviados correctamente! Pronto nos estaremos comunicando con ustedes');</script>";
 					
 				} catch (Exception $e) {
 					echo 'Se ha producido un error. Intente comunicarse por otro medio con VIA ELECTRONICA';
 				}
 			}
-
-			//echo"<script> location.replace('listado.php?dni= ".$dni."& nombre=".$nombre."& apellido=".$apellido."& sexo=".$sexo."& provincia=".$provincia."'); </script>";
-			//header('Location:'.$url);
-			echo"<script> location.replace('".$actual_link."'); </script>";
+			
+			
+			
 			
 		}
 			
 	?>	
+
 
 
 
@@ -449,10 +445,11 @@ function generarPDF(anio,tipo) {
 			<br>
 		</div>
 
-		<form id="reclamo_multa_abonada" class="was-validated" method ="post" autocomplete="on" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">	
+
+		
 			<div class="form-group">
 				<label >Nro. de boleta de pago:</label>
-				<input type="text" class="form-control" name="n_boleta" placeholder="Ingrese el numero de la boleta de pago"  required>
+				<input type="text" class="form-control" id="n_boleta" placeholder="Ingrese el numero de la boleta de pago"  required>
 				<div class="valid-feedback">Valido.</div>
 				<div class="invalid-feedback">Complete el campo.</div>
 			</div>
@@ -461,7 +458,7 @@ function generarPDF(anio,tipo) {
 			<br><br>
 			<div class="form-group">
 				<label >Motivo del reclamo:</label>
-				<select  name="n_medio_pago" size="1">
+				<select  id="n_medio_pago" size="1">
 					<option value="banco nacion" >Por Banco Nacion</option>
 					<option value="otros medios" >Otros medios de pago electronicos</option>
 				</select>
@@ -469,7 +466,7 @@ function generarPDF(anio,tipo) {
 			<div class="form-group">
 				<label >Fecha de pago:</label>
 				<label >Dia</label>
-				<select  name="n_dia" size="1">
+				<select  id="n_dia" size="1">
 					<option value="1" >1</option>
 					<option value="2" >2</option>
 					<option value="3" >3</option>
@@ -503,7 +500,7 @@ function generarPDF(anio,tipo) {
 					<option value="31" >31</option>
 				</select>
 				<label >Mes</label>
-				<select  name="n_mes" size="1">
+				<select  id="n_mes" size="1">
 					<option value="enero" >enero</option>
 					<option value="febrero" >febrero</option>
 					<option value="marzo" >marzo</option>
@@ -518,7 +515,7 @@ function generarPDF(anio,tipo) {
 					<option value="diciembre" >diciembre</option>
 				</select>
 				<label >Año</label>
-				<select  name="n_anio" size="1">
+				<select  id="n_anio" size="1">
 					<option value="2019" >2019</option>
 					<option value="2018" >2018</option>
 					<option value="2017" >2017</option>
@@ -534,14 +531,14 @@ function generarPDF(anio,tipo) {
 			Para comunicarnos con Ud. acerca de la tramitación de su reclamo		
 			<div class="form-group">
 				<label for="uname">Su teléfono:</label>
-				<input type="text" class="form-control" name="n_telefono" placeholder="Incluya la característica de su localidad" name="" required>
+				<input type="text" class="form-control" id="n_telefono" placeholder="Incluya la característica de su localidad" name="" required>
 				<div class="valid-feedback">Valido.</div>
 				<div class="invalid-feedback">Complete el campo.</div>
 			</div>
 			<br>
 			<div class="form-group">
 				<label for="uname">Su direccion de email:</label>
-				<input type="text" class="form-control" name="n_email" placeholder="Ingrese su email" name="" required>
+				<input type="text" class="form-control" id="n_email" placeholder="Ingrese su email" required>
 				<div class="valid-feedback">Valido.</div>
 				<div class="invalid-feedback">Complete el campo.</div>
 			</div>
@@ -549,11 +546,12 @@ function generarPDF(anio,tipo) {
 
 				<!-- Modal footer -->
 			<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" name="efectuar_reclamo" value="efectuar_reclamo" >Proceder</button>
+					
+					<button type="submit" class="btn btn-primary" name="efectuar_reclamo" value="case_reclamo" onclick="alert('Se le ha enviado el reclamo a la autoridad  correspondiente que pronto se contactara con usted')">Efectuar reclamo</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 			</div>	
 
-		</form>		
+			
         </div>
       </div>
     </div>
@@ -578,8 +576,8 @@ function generarPDF(anio,tipo) {
         <div class="modal-body">
           
 		<div class="container">
-			<form id="reclamo" class="was-validated" method ="post" autocomplete="on" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-				<div class="form-group">
+			<!--<form id="reclamo" class="was-validated" method ="post" autocomplete="on" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			-->	<div class="form-group">
 					<label >Motivo del reclamo:</label>
 					<select  name="n_motivo" size="1">
 						<option value="">-Por favor seleccione</option>
@@ -598,7 +596,7 @@ function generarPDF(anio,tipo) {
 				<div class="form-group">
 					<label >Breve explicación de su reclamo<br>
 							(max.200 caracteres)</label>
-					<textarea class="form-control" id="" name="n_texto" rows="4" cols="75" maxlength="200" placeholder="Describa brevemente el motivo de su reclamo...." required></textarea>
+					<textarea class="form-control" id="id_texto" name="n_texto" rows="4" cols="75" maxlength="200" placeholder="Describa brevemente el motivo de su reclamo...." required></textarea>
 					<div class="valid-feedback">Valido.</div>
 					<div class="invalid-feedback">Complete el campo.</div>
 				</div>
@@ -620,11 +618,11 @@ function generarPDF(anio,tipo) {
 				</div>
 				<!-- Modal footer -->
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" name="efectuar_reclamo" value="case_reclamo" >Efectuar reclamo</button>
+				    <button type="submit" class="btn btn-primary" name="efectuar_reclamo" value="case_reclamo" onclick="alert('Se le ha enviado el reclamo a la autoridad  correspondiente que pronto se contactara con usted')">Efectuar reclamo</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 				</div>
 				
-			</form>
+			<!--</form>  -->
 		</div>
         </div>
          
