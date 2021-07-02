@@ -34,8 +34,6 @@
 
 <body>
 
-
-
 	<div class="container-fluid">
       <div class="row justify-content-center">
 	 <div class="col-md-8">
@@ -104,8 +102,6 @@
 									</div>
 								</div>
 
-
-
 								<div class="col-md-4 text-center">
 									<div class="form-group ">
 										<div class="input-group mb-2">
@@ -168,7 +164,6 @@
 	include("conexion.php");
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
 		define("RECAPTCHA_V3_SECRET_KEY", '6Lc6EEgbAAAAABCiOdMLbrC81IIsoCGcr6poEg6s');
 		$token = $_POST['token'];
 		$action = $_POST['action'];
@@ -187,7 +182,6 @@
 			$dni = $_POST['Emat'];
 			$sexo = $_POST['Esex'];
 			$prov = $_POST['Epro'];
-			//$arr=array();
 			$arr=buscar($dni,$sexo,$prov);		
 			if($arr != null){			
 				echo"<script> location.replace('listado.php?dni=".$dni."& nombre=".$arr[1]."& apellido=".$arr[2]."& sexo=".$sexo."& provincia=".$prov."'); </script>";
@@ -202,15 +196,6 @@
 
 ?>
 
-
-
-					<script type="text/javascript" language="JavaScript1.1">
-						document.getElementById('captcha').src = 'captcha/securimage_show.php?' + Math.random(); 
-					</script>
-					<script type="text/javascript" language="JavaScript1.1">
-						document.dgt.Emat.select();  
-						document.dgt.Emat.focus();  
-					</script>
 					<div class="modal fade" id="ayudaModal" tabindex="-1" role="dialog" aria-labelledby="ayuda" aria-hidden="true" style="display: none;">
 					  <div class="modal-dialog" role="document">
 						<div class="modal-content">
