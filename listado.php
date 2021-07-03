@@ -396,12 +396,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 					</div>
 					<!-- Modal body -->
 					<div class="modal-body">
-						Seleccione el medio de pago que desea utilizar
-						
+						Seleccione el banco nacion para generar su boleta de pago
+						<div>
 							 <img src="imagenes/BN.jpg" height=100px width=100px >
 							 <!-- PASALE LOS PARAMETROS QUE NECESITAS -->
 							 <button onclick="generarBoletaBN(  )">Banco de la nacion</button>		
-
+						</div>
 						
 					</div>
 					<!-- Modal footer -->
