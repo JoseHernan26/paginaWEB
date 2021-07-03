@@ -375,9 +375,22 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 		</div>
 
 
-		<!-- JOSE ESTA ES LA FUNCION PARA EL PDF DEL BANCO NACION -->								
+		<!-- JOSE ESTA ES LA FUNCION PARA EL PDF -->	
+		<!-- GUARDA TODO EN REPORTE-pdf/  -->							
 		<script type="text/javascript">
-			function generarBoletaBN(anio,tipo) {
+			function generarBoletaBN() {
+				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
+				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+			}
+			function generarBoletaRapi() {
+				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
+				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+			}
+			function generarBoletaPagoFacil() {
+				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
+				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+			}
+			function generarBoletaCobroExpress() {
 				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
 				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
 			}
@@ -391,18 +404,48 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 				<div class="modal-content">
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h4 class="modal-title">GENERACION DE BOLETA DE PAGO DE MULTA</h4>
+						<h4 class="modal-title">GENERAR BOLETA DE PAGO</h4>
 						<button type="button" class="close" data-dismiss="modal">×</button>
 					</div>
 					<!-- Modal body -->
 					<div class="modal-body">
-						Seleccione el banco nacion para generar su boleta de pago
-						<div>
-							 <img src="imagenes/BN.jpg" height=100px width=100px >
-							 <!-- PASALE LOS PARAMETROS QUE NECESITAS -->
-							 <button onclick="generarBoletaBN(  )">Banco de la nacion</button>		
-						</div>
+					<ul>
+						Seleccione el metodo de pago 
+						<br>
+						<br>
+						<br>	
+						<li  style="list-style:none;"> 
+						<!-- BANCO NACION  -->
+						<img src="imagenes/BN.jpg" height=100px width=100px >
+						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
+						<button class="btn btn-info" onclick="generarBoletaBN(  )">Banco de la nacion</button>	
+						</li>
+
+						<br>
+						<li  style="list-style:none;">
+						<!-- RAPI PAGO  -->
+						<img src="imagenes/rapiPago.png" height=60px width=100px >
+						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
+						<button class="btn btn-info" onclick="generarBoletaRapi(  )">Rapi Pago</button>		
+						</li>
+
+						<br>
+						<li  style="list-style:none;">
+						<!-- PAGO FACIL -->
+						<img src="imagenes/PagoFacil.png" height=80px width=100px >
+						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
+						<button class="btn btn-info" class="btn btn-info" onclick="generarBoletaPagoFacil(  )">Pago Facil </button>
+						</li>
+
+						<br>
+						<li  style="list-style:none;">
+						<!-- COBRO EXPRESS -->
+						<img src="imagenes/CobroExpress.png" height=50px width=100px >
+						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
+						<button class="btn btn-info"  onclick="generarBoletaCobroExpress(  )">Cobro Express </button>
+						</li>
 						
+					</ul>	
 					</div>
 					<!-- Modal footer -->
 					<div class="modal-footer">
