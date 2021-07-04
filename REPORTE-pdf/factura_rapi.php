@@ -13,17 +13,18 @@ $var_tipo = $_GET['tipo'];
 */
 // SI O SI VARIABLES QUE DEBEN SER CARGADAS POR GET:
 //fecha del vencimiento de la boleta
-$var_monto= 50;
-$var_day= 18;
-$var_month='Julio';
-$var_year=2021;
+$fecha_vencimiento = explode(".",date('Y.m.d', strtotime('+1 week')));
+$var_monto=$_GET['monto'];
+$var_day=$fecha_vencimiento[2];
+$var_month=$fecha_vencimiento[1];
+$var_year=$fecha_vencimiento[0];
 //--------------------------
-$var_nombre_mesa= 'PRIMARIAS 2015';
-$var_fecha_mesa= '09/08/2015';
-$var_nom = 'JOSE HERNAN';
-$var_ape = 'PEREZ';
-$var_dni = 11111111;
-$var_mail= 'alguncorr@gmail.com';
+$var_nombre_mesa= $_GET['tipo'];
+$var_fecha_mesa= $_GET['fecha'];
+$var_nom = $_GET['nombre'];
+$var_ape = $_GET['apellido'];
+$var_dni = $_GET['dni'];
+$var_mail= $_GET['email'];
 //opcional:
 $var_numero_pago=1180961061;
 $var_numero_referencia=5996475607;

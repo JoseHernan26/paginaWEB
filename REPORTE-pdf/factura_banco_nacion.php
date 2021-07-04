@@ -2,13 +2,13 @@
 
 require('fpdf/fpdf.php');
 // los nombres deben ir en mayuscula
-$var_nom = 'JOSE HERNAN';
-$var_ape = 'PEREZ';
-$var_dni = 11111111;
-$var_fecha_vencimiento= '06/07/2021';
-$var_monto=50;
-$var_nombre_mesa= 'PRIMARIAS 2015';
-$var_fecha_mesa= '09/08/2015';
+$var_nom = $_GET['nombre'];
+$var_ape = $_GET['apellido'];
+$var_dni = $_GET['dni'];
+$var_fecha_vencimiento= date('Y.m.d', strtotime('+1 week'));
+$var_monto=$_GET['monto'];
+$var_nombre_mesa= $_GET['tipo'];
+$var_fecha_mesa= $_GET['fecha'];
 $pdf = new FPDF();
 $pdf->AddPage('P', 'A4');
 $pdf->SetAutoPageBreak(true, 10);
