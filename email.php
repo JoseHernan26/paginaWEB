@@ -6,8 +6,10 @@ if(isset($_POST['enviarReclamo'])){
     $telefono = $_POST['telefono'];
     $email = $_POST['email'];
     $para = 'rosasfran.97@gmail.com';
-    echo "<script>window.alert('Correo: ".$email." Teléfono: ".$telefono." Motivo: ".$motivo." Mensaje: ".$texto."');</script>";
-    //Aca hay q enviar el mail, me dio paja configurar el php para q lo mande
+    //echo "<script>window.alert('Correo: ".$email." Teléfono: ".$telefono." Motivo: ".$motivo." Mensaje: ".$texto."');</script>";
+    $contenido= "Correo: ".$email." Teléfono: ".$telefono." Motivo: ".$motivo." Mensaje: ".$texto;
+    mail($para,"RECLAMO",$contenido);
+    echo "<script>window.alert('Se envio su reclamo correctamente! Pronto nos contactaremos con usted');</script>";
 }
 if(isset($_POST['enviarReclamoMulta'])){
     $boleta = $_POST['boleta'];
@@ -17,7 +19,9 @@ if(isset($_POST['enviarReclamoMulta'])){
     $telefono = $_POST['telefono'];
 
     $para = 'rosasfran.97@gmail.com';
-    echo "<script>window.alert('Boleta: ".$boleta." Medio: ".$medio." Fecha: ".$fecha." Email: ".$email." Telefono: ".$telefono."');</script>";
-    //Aca hay q enviar el mail, me dio paja configurar el php para q lo mande
+    //echo "<script>window.alert('Boleta: ".$boleta." Medio: ".$medio." Fecha: ".$fecha." Email: ".$email." Telefono: ".$telefono."');</script>";
+    $contenido= "Boleta: ".$boleta." Medio: ".$medio." Fecha: ".$fecha." Email: ".$email." Telefono: ".$telefono;
+    mail($para,"RECLAMO",$contenido);
+    echo "<script>window.alert('Se envio su reclamo correctamente! Pronto nos contactaremos con usted');</script>";
 }
 ?>
