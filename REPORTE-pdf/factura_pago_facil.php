@@ -11,7 +11,7 @@ $var_tipo = $_GET['tipo'];
 
 
 */
-// SI O SI
+// SI O SI VARIABLES QUE DEBEN SER CARGADAS POR GET:
 //fecha del vencimiento de la boleta
 $var_monto= 50;
 $var_day= 18;
@@ -29,6 +29,7 @@ $var_numero_pago=1180961061;
 $var_numero_referencia=5996475607;
 
 
+//NO TOCAR
 
 $var_dayNow=date("d");
 $var_monthNow=date("m");
