@@ -75,7 +75,7 @@ $pdf->SetDrawColor(0);
 $pdf->SetFont('', 'B', 10);
 $pdf->SetDrawColor(198,245,255);
 $pdf->SetXY(10, 90);
-$pdf->Cell(0, 20, 'Haz tu pago en cualquier punto COBRO EXPRESS del pais', 1, 1, 'C', false);
+$pdf->Cell(0, 20, 'Haz tu pago en cualquier punto RAPI PAGO del pais', 1, 1, 'C', false);
 $pdf->SetDrawColor(0);
 /* --- Cell --- */
 $pdf->SetFillColor(198,245,255);
