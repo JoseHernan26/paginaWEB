@@ -15,7 +15,6 @@ $var_fecha_mesa= $_GET['fecha'];
 $var_nom = $_GET['nombre'];
 $var_ape = $_GET['apellido'];
 $var_dni = $_GET['dni'];
-$var_mail= $_GET['email'];
 //opcional:
 $var_numero_pago=1180961061;
 $var_numero_referencia=5996475607;
@@ -97,8 +96,7 @@ $pdf->text(15, 140, 'Descripcion: Pago Multa Ley 26.744 por Aplica multa', 1, 1,
 $pdf->text(15, 145, $var_nombre_mesa.' ('.$var_fecha_mesa.') ('.$var_dni.')', 1, 1, 'C', false);
 
 $pdf->text(110, 130, 'Nombre: '.$var_nom.' '.$var_ape, 1, 1, 'C', false);
-$pdf->text(110, 135, 'Email: '.$var_mail, 1, 1, 'C', false);
-$pdf->text(110, 140, 'Referencia: '.$var_numero_referencia, 1, 1, 'C', false);
+$pdf->text(110, 135, 'Referencia: '.$var_numero_referencia, 1, 1, 'C', false);
 
 
 // x ,y, proporcion 

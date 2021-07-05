@@ -217,7 +217,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 											'<div class="modal-header"><h4 class="modal-title">GENERAR BOLETA DE PAGO</h4><button type="button" class="close" data-dismiss="modal">×</button>',
 											'</div><div class="modal-body"><ul>Seleccione el metodo de pago<br><br><br><li style="list-style:none;"><img src="imagenes/BN.jpg" height=100px width=100px >',
 											'<button class="btn btn-info" onclick="generarBoletaBN(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Banco de la nacion</button></li><br><li style="list-style:none;"><img src="imagenes/rapiPago.png" height=60px width=100px >',
-											'<button class="btn btn-info" onclick="generarBoletaRapi(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Rapi Pago</button></li><br><li style="list-style:none;"><img src="imagenes/PagoFacil.png" height=80px width=100px >',
+											'<button class="btn btn-info" onclick="generarBoletaRapi(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Rapi Pago</button></li><br><li style="list-style:none;"><img src="imagenes/PagoFacil1.png" height=80px width=100px >',
 											'<button class="btn btn-info" class="btn btn-info" onclick="generarBoletaPagoFacil(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Pago Facil </button></li><br><li style="list-style:none;"><img src="imagenes/CobroExpress.png" height=50px width=100px >',
 											'<button class="btn btn-info" onclick="generarBoletaCobroExpress(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Cobro Express</button></li></ul></div><div class="modal-footer"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>',
 											'</div></div></div></div>'].join("\n");
@@ -395,16 +395,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 				window.open("REPORTE-pdf/factura_banco_nacion.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
 			function generarBoletaRapi(fecha,tipo,monto){
-				var email = window.prompt('Ingrese su Email');
-				window.open("REPORTE-pdf/factura_rapi.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto+"& email="+email);
+				window.open("REPORTE-pdf/factura_rapi.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
 			function generarBoletaPagoFacil(fecha,tipo,monto) {
-				var email = window.prompt('Ingrese su Email');
-				window.open("REPORTE-pdf/factura_pago_facil.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto+"& email="+email);
+				window.open("REPORTE-pdf/factura_pago_facil.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
 			function generarBoletaCobroExpress(fecha,tipo,monto) {
-				var email = window.prompt('Ingrese su Email');
-				window.open("REPORTE-pdf/factura_cobro_express.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto+"& email="+email);
+				window.open("REPORTE-pdf/factura_cobro_express.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
 		</script>
 		<!-- The Modal -->
