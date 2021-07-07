@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 											return $distrito;
 										}
 
-										function f_infractor($posicion,$anio,$tipo){
+										function f_infractor($posicion,$fecha,$tipo,$monto){
 											if($posicion=="Sin Deuda"){
 												$rta='
 												<div class="col-md-6 text-center align-middle">
@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 												</div>
 												<div class="col-md-4 text-right" style="vertical-align:middle;">
 													<span>
-														<button type="button" class="btn btn-outline-success"  onclick="generarPDF(&quot;'.$anio.'&quot;,&quot;'.$tipo.'&quot;)">Imprimir constancia</button>
+														<button type="button" class="btn btn-outline-success"  onclick="generarPDF(&quot;'.$fecha[0].'&quot;,&quot;'.$tipo.'&quot;)">Imprimir constancia</button>
 													</span>
 												</div>';
 											}
@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 												</div>
 												<div class="col-md-4 text-right" style="vertical-align:middle;">
 													<span>													
-														<button type="button"  class="btn btn-outline-danger" data-toggle="modal" data-target="#Boleta_de_pago_multa">
+														<button type="button"  class="btn btn-outline-danger" onclick="generarModal(&quot;'.$fecha[0].'/'.$fecha[1].'/'.$fecha[2].'&quot;,&quot;'.$tipo.'&quot;,&quot;'.$monto.'&quot;)">
 																Boleta de pago multa
 														</button>
 														<br><br>
@@ -194,7 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 																<span class="small text-body">'.$arr[$i][1].'</span>
 																<br>
 																<span class="text-primary"><b>'.f_provincia($arr[$i][2]).'</b></span>
-															</div>'.f_infractor($arr[$i][3],$fecha[0],$arr[$i][1]).'
+															</div>'.f_infractor($arr[$i][3],$fecha,$arr[$i][1],$arr[$i][4]).'
 														</div>
 													</div>';
 											}
@@ -203,17 +203,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 									?>
 									<!-------- FIN    XXXXXXXXXXXX    --------->
 
-
 									<script type="text/javascript">
 										function generarPDF(anio,tipo) {
 											var nombre = "<?php Print($nombre);?>";
 											var apellido =  "<?php Print($apellido);?>";
 											var dni =  "<?php Print($dni);?>";
-											window.open("REPORTE-pdf/index.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+											window.open("REPORTE-pdf/Constancia_multa_reclamada.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
 										}
 									</script>
-
-
+									<script type="text/javascript">
+										function generarModal(fecha,tipo,monto){
+											var html = ['<div class="modal fade" id="Boleta_de_pago_multa"><div class="modal-dialog"><div class="modal-content">',
+											'<div class="modal-header"><h4 class="modal-title">GENERAR BOLETA DE PAGO</h4><button type="button" class="close" data-dismiss="modal">×</button>',
+											'</div><div class="modal-body"><ul>Seleccione el metodo de pago<br><br><br><li style="list-style:none;"><img src="imagenes/BN.jpg" height=100px width=100px >',
+											'<button class="btn btn-info" onclick="generarBoletaBN(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Banco de la nacion</button></li><br><li style="list-style:none;"><img src="imagenes/rapiPago.png" height=60px width=100px >',
+											'<button class="btn btn-info" onclick="generarBoletaRapi(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Rapi Pago</button></li><br><li style="list-style:none;"><img src="imagenes/PagoFacil1.png" height=80px width=100px >',
+											'<button class="btn btn-info" class="btn btn-info" onclick="generarBoletaPagoFacil(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Pago Facil </button></li><br><li style="list-style:none;"><img src="imagenes/CobroExpress.png" height=50px width=100px >',
+											'<button class="btn btn-info" onclick="generarBoletaCobroExpress(&quot;'+fecha+'&quot;,&quot;'+tipo+'&quot;,&quot;'+monto+'&quot;)">Cobro Express</button></li></ul></div><div class="modal-footer"><button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>',
+											'</div></div></div></div>'].join("\n");
+											$("body").append(html);
+											$("#Boleta_de_pago_multa").modal({"backdrop": "static"});
+															
+										}
+									</script>
 									<div class="alert alert-warning shadow rounded" role="alert">
 										<div class="col-md-12 text-center"><img src="imagenes/Atencion_50.png" height=40px width=40px></div>
 										<b>ATENCION: Si desea conocer su situación respecto a actos electorales anteriores deberá comunicarse con la Secretaría Electoral Nacional del distrito donde reside, o en la Cämara Nacional Electoral.</b>
@@ -310,9 +322,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 				</div>
 			</div>
 		</div>	
-
 		<iframe name="mismaPag" id="mismaPag" style="display: none;"></iframe>
-
 		<!-- The Modal -->
 		<div class="modal fade" id="Reclamar" >
 			<div class="modal-dialog" >
@@ -374,86 +384,27 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" ){
 			</div>
 		</div>
 
-
 		<!-- JOSE ESTA ES LA FUNCION PARA EL PDF -->	
 		<!-- GUARDA TODO EN REPORTE-pdf/  -->							
 		<script type="text/javascript">
-			function generarBoletaBN() {
+			var nombre = "<?php Print($nombre);?>";
+			var apellido =  "<?php Print($apellido);?>";
+			var dni =  "<?php Print($dni);?>";
+			function generarBoletaBN(fecha,tipo,monto) {
 				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
-				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+				window.open("REPORTE-pdf/factura_banco_nacion.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
-			function generarBoletaRapi() {
-				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
-				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+			function generarBoletaRapi(fecha,tipo,monto){
+				window.open("REPORTE-pdf/factura_rapi.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
-			function generarBoletaPagoFacil() {
-				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
-				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+			function generarBoletaPagoFacil(fecha,tipo,monto) {
+				window.open("REPORTE-pdf/factura_pago_facil.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
-			function generarBoletaCobroExpress() {
-				// ESCRIBILE EL NOMBRE DEL ARCHIVO EJ INDEX.PHP   Y LAS VARIABLES COMO ESTA ABAJO	
-				window.open("REPORTE-pdf/NOMBRE_DEL_ARCHIVO_NUEVO.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& anio="+anio+"& tipo="+tipo);
+			function generarBoletaCobroExpress(fecha,tipo,monto) {
+				window.open("REPORTE-pdf/factura_cobro_express.php?nombre="+nombre+"& apellido="+apellido+" & dni="+dni+"& fecha="+fecha+"& tipo="+tipo+"& monto="+monto);
 			}
 		</script>
-
-
-
 		<!-- The Modal -->
-		<div class="modal fade" id="Boleta_de_pago_multa">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h4 class="modal-title">GENERAR BOLETA DE PAGO</h4>
-						<button type="button" class="close" data-dismiss="modal">×</button>
-					</div>
-					<!-- Modal body -->
-					<div class="modal-body">
-					<ul>
-						Seleccione el metodo de pago 
-						<br>
-						<br>
-						<br>	
-						<li  style="list-style:none;"> 
-						<!-- BANCO NACION  -->
-						<img src="imagenes/BN.jpg" height=100px width=100px >
-						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
-						<button class="btn btn-info" onclick="generarBoletaBN(  )">Banco de la nacion</button>	
-						</li>
-
-						<br>
-						<li  style="list-style:none;">
-						<!-- RAPI PAGO  -->
-						<img src="imagenes/rapiPago.png" height=60px width=100px >
-						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
-						<button class="btn btn-info" onclick="generarBoletaRapi(  )">Rapi Pago</button>		
-						</li>
-
-						<br>
-						<li  style="list-style:none;">
-						<!-- PAGO FACIL -->
-						<img src="imagenes/PagoFacil.png" height=80px width=100px >
-						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
-						<button class="btn btn-info" class="btn btn-info" onclick="generarBoletaPagoFacil(  )">Pago Facil </button>
-						</li>
-
-						<br>
-						<li  style="list-style:none;">
-						<!-- COBRO EXPRESS -->
-						<img src="imagenes/CobroExpress.png" height=50px width=100px >
-						<!-- PASALE LOS PARAMETROS QUE NECESITAS -->
-						<button class="btn btn-info"  onclick="generarBoletaCobroExpress(  )">Cobro Express </button>
-						</li>
-						
-					</ul>	
-					</div>
-					<!-- Modal footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-					</div>	
-				</div>
-			</div>
-		</div>
 	</body>
 	<div id="vimeo-record-extension"></div>
 </html>
